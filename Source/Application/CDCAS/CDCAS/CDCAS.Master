@@ -18,10 +18,10 @@
         <div class="div-barricades">
         </div>
         <div id="div-navigation">
-            <asp:Menu ID="Menu1" Orientation="Horizontal" runat="server">
-                <StaticMenuStyle CssClass="menu-static" />
+            <asp:Menu ID="Menu1" Orientation="Horizontal" StaticMenuStyle-CssClass="menu-static" runat="server">
+                <DynamicSelectedStyle CssClass="test" />
                 <Items>
-                    <asp:MenuItem Text="Home"></asp:MenuItem>
+                    <asp:MenuItem Text="Home" Selected="true"></asp:MenuItem>
                     <asp:MenuItem Text="Login"></asp:MenuItem>
                     <asp:MenuItem Text="Map"></asp:MenuItem>
                     <asp:MenuItem Text="About Us"></asp:MenuItem>
