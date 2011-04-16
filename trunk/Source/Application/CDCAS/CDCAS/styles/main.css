@@ -1,6 +1,11 @@
 ﻿body
 {
-    background-color: #C1D7FF;
+    background-color: #000000;
+    font-size: medium;
+    font-weight: bold;
+    font-style: normal;
+    font-variant: normal;
+    color: #FF99FF;
 }
 
 #div-container
@@ -22,10 +27,13 @@
 
 #div-navigation
 {
-    width: 965px;
+    width: 940px;
     background-color: #ffb739;
     margin-top: 20px;
-    height:50px;
+    height: 55px;
+    font-weight: bold;
+    font-style: normal;
+    color: #000080;
 }
 
 .div-barricades
@@ -37,14 +45,14 @@
 
 .image-logo
 {
-    width: 234px;
-    height: 114px;
+    width: 220px;
+    height: 115px;
 }
 
 .image-title
 {
-    width: 730px;
-    height: 114px;
+    width: 720px;
+    height: 115px;
 }
 
 .menu-static
