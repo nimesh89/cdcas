@@ -18,15 +18,17 @@
         <div class="div-barricades">
         </div>
         <div id="div-navigation">
-            <asp:Menu ID="Menu1" Orientation="Horizontal" runat="server">
-                <StaticMenuStyle CssClass="menu-static"  />
-                <Items>
-                    <asp:MenuItem Text="Home"></asp:MenuItem>
-                    <asp:MenuItem Text="Login"></asp:MenuItem>
-                    <asp:MenuItem Text="Map"></asp:MenuItem>
-                    <asp:MenuItem Text="About Us"></asp:MenuItem>
-                </Items>
-            </asp:Menu>
+            <div id="div-navigation-inner">
+                <asp:Menu ID="Menu1" Orientation="Horizontal" runat="server">
+                    <StaticMenuStyle CssClass="menu-static" />
+                    <Items>
+                        <asp:MenuItem Text="Home"></asp:MenuItem>
+                        <asp:MenuItem Text="Login"></asp:MenuItem>
+                        <asp:MenuItem Text="Map"></asp:MenuItem>
+                        <asp:MenuItem Text="About Us"></asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
         </div>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
