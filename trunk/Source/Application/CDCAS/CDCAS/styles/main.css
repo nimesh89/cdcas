@@ -65,13 +65,19 @@
     padding-right:10px;
 }
 
-.menu-static li:hover
+.menu-static li:first-child
 {
-    text-decoration: underline;
-    color: Blue;
+    margin-left:10px;
+}
+
+.menu-static li > a:hover:not(.selected)
+{
+    color: Red;
 }
 
 .selected
 {
     color: White;
 }
+
+
