@@ -54,6 +54,7 @@
     <Content Include="Home.aspx" />
     <Content Include="images\cdcs_logo.png" />
     <Content Include="images\Title.png" />
+    <Content Include="Login.aspx" />
     <Content Include="styles\main.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -84,6 +85,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
