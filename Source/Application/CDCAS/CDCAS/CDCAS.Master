@@ -10,24 +10,29 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <table align="center" width="965px" cellpadding="1" cellspacing="0">
-        <tr>
-            <td>
-                <asp:Image ID="Logo" ImageUrl="~/images/cdcs_logo.png" runat="server" />
-            </td>
-            <td>
-                <asp:Image ID="Title" ImageUrl="~/images/Title.png" runat="server" />
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <div>
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <div id="div-container">
+        <div id="div-logo">
+            <asp:Image ID="Logo" CssClass="image-logo" ImageUrl="~/images/cdcs_logo.png" runat="server" /></div>
+        <div id="div-title">
+            <asp:Image ID="Title" CssClass="image-title" ImageUrl="~/images/Title.png" runat="server" /></div>
+        <div class="div-barricades">
+        </div>
+        <div id="div-navigation">
+            <asp:Menu ID="Menu1" Orientation="Horizontal" runat="server">
+                <StaticMenuStyle CssClass="menu-static"  />
+                <Items>
+                    <asp:MenuItem Text="Home"></asp:MenuItem>
+                    <asp:MenuItem Text="Login"></asp:MenuItem>
+                    <asp:MenuItem Text="Map"></asp:MenuItem>
+                    <asp:MenuItem Text="About Us"></asp:MenuItem>
+                </Items>
+            </asp:Menu>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
     </form>
 </body>
 </html>
