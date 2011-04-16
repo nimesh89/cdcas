@@ -1,11 +1,16 @@
 ﻿body
 {
     background-color: #000000;
+    font-size: medium;
+    font-weight: bold;
+    font-style: normal;
+    font-variant: normal;
+    color: #FF99FF;
 }
 
 #div-container
 {
-    width: 941px;
+    width: 965px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -22,16 +27,13 @@
 
 #div-navigation
 {
-    width: 941px;
+    width: 940px;
     background-color: #ffb739;
-    margin-top: 10px;
-    height: 50px;
-    border-radius:15px;
-}
-
-#div-content
-{
-    margin-top: 10px;
+    margin-top: 20px;
+    height: 55px;
+    font-weight: bold;
+    font-style: normal;
+    color: #000080;
 }
 
 .div-barricades
@@ -45,7 +47,6 @@
 {
     width: 220px;
     height: 115px;
-    border-top-left-radius:15px;
 }
 
 .image-title
@@ -56,8 +57,8 @@
 
 .menu-static
 {
-    position: relative;
-    top: 15px;
+    position:relative;
+    top:15px;
     background-color: #ffb739;
 }
 
@@ -66,30 +67,19 @@
     margin-right: 10px;
     font-size: 21px;
     text-align: center;
-    border-right-style: solid;
-    border-right-width: 2px;
-    border-right-color: Black;
-    padding-right: 10px;
+    border-right-style:solid;
+    border-right-width:2px;
+    border-right-color:Black;
+    padding-right:10px;
 }
 
-.menu-static li:first-child
+.menu-static li:hover
 {
-    margin-left: 10px;
-}
-
-.menu-static li > a:hover:not(.selected)
-{
-    color: Red;
+    text-decoration: underline;
+    color: Blue;
 }
 
 .selected
 {
     color: White;
-}
-
-/*Login Page Styles*/
-#login-div-container
-{
-    background-color:White;
-    border-radius:15px;
 }
