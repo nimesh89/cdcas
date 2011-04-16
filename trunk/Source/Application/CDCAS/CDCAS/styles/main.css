@@ -1,4 +1,70 @@
-﻿body 
+﻿body
 {
-    background-color:rgb(188,215,255);
+    background-color: rgb(188,215,255);
+}
+
+#div-container
+{
+    width: 965px;
+    background-color: Green;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#div-logo
+{
+    float: left;
+}
+
+#div-title
+{
+    float: left;
+}
+
+#div-navigation
+{
+    width: 965px;
+    background-color: #ffb739;
+}
+
+.div-barricades
+{
+    clear: both;
+    width: 1px;
+    height: 1px;
+}
+
+.image-logo
+{
+    width: 234px;
+    height: 114px;
+}
+
+.image-title
+{
+    width: 730px;
+    height: 114px;
+}
+
+.menu-static
+{
+    background-color: #ffb739;
+}
+
+.menu-static li
+{
+    margin-right: 20px;
+    font-size: 21px;
+    text-align: center;
+}
+
+.menu-static li:hover
+{
+    text-decoration: underline;
+    color: Blue;
+}
+
+.selected
+{
+    color:White;
 }
