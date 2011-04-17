@@ -50,6 +50,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="images\cdcs_logo.png" />
@@ -66,6 +67,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CDCAS.Master.cs">
       <DependentUpon>CDCAS.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
