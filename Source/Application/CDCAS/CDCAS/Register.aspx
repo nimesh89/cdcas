@@ -110,6 +110,9 @@
                         </tr>
                     </table>
                 </fieldset>
+                <div id="register-signup-holder">
+                    <asp:Button ID="Button1" runat="server" CssClass="login-button-subbmit" Text="Request" />
+                </div>
             </div>
             <div class="div-barricades">
             </div>

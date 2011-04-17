@@ -15,6 +15,7 @@ namespace CDCAS
             {
                 int no = 0;
                 int.TryParse(Request.QueryString["no"], out no);
+                if (no == 0) return;
                 Menu1.Items[no].Selected = true;
             }
         }

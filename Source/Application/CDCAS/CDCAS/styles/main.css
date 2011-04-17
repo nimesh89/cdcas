@@ -210,6 +210,18 @@
     margin-top: 20px;
 }
 
+#register-signup-holder
+{
+    position: relative;
+    border: 4px solid #1049A0;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 5px;
+    text-align:center;
+    width:100px;
+    margin-top: 80px;
+}
+
 .register-div-groupbox
 {
     position: relative;
