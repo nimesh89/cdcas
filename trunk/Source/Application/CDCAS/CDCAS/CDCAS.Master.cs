@@ -11,7 +11,12 @@ namespace CDCAS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                int no = 0;
+                int.TryParse(Request.QueryString["no"], out no);
+                Menu1.Items[no].Selected = true;
+            }
         }
     }
 }
