@@ -88,6 +88,14 @@
     color: White;
 }
 
+.page-div-container
+{
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom:10px;
+    background-color: #DCE0D8;
+}
+
 /*Login Page Styles*/
 #login-div-container
 {
