@@ -4,8 +4,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="login-div-container">
-        <div id="login-div-title">
+    <div class="page-div-container">
+        <div class="page-div-title">
             Login</div>
         <div id="login-div-control">
             <div id="login-div-control-container">
