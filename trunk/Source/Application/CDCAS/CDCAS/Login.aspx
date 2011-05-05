@@ -27,7 +27,7 @@
                 </div>
                 <div id="login-form-signup">
                     Don't have a account please click
-                    <asp:LinkButton ID="LinkButton1" PostBackUrl="~/Register.aspx" runat="server">here</asp:LinkButton></div>
+                    <asp:LinkButton ID="LinkButton1" PostBackUrl="~/Register.aspx?no=11" runat="server">here</asp:LinkButton></div>
             </div>
         </div>
         <div id="login-div-misc">

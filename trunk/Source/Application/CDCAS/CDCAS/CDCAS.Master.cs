@@ -13,9 +13,9 @@ namespace CDCAS
         {
             if(!IsPostBack)
             {
-                int no = 0;
+                int no = -1;
                 int.TryParse(Request.QueryString["no"], out no);
-                if (no == 0) return;
+                if (no == -1 || no > 10) return;
                 Menu1.Items[no].Selected = true;
             }
         }

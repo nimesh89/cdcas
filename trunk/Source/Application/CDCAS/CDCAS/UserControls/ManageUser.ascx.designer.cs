@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CDCAS {
+namespace CDCAS.UserControls {
     
     
-    public partial class Admin {
+    public partial class ManageUser {
         
         /// <summary>
-        /// TextBox1 control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
         /// ImageButton1 control.
@@ -31,21 +31,12 @@ namespace CDCAS {
         protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
         
         /// <summary>
-        /// ManageUser1 control.
+        /// LinkButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CDCAS.UserControls.ManageUser ManageUser1;
-        
-        /// <summary>
-        /// ManageUser2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CDCAS.UserControls.ManageUser ManageUser2;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
     }
 }

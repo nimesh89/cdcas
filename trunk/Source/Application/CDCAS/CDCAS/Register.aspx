@@ -2,6 +2,51 @@
     CodeBehind="Register.aspx.cs" Inherits="CDCAS.Register" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="Scripts/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-ui-1.8.12.custom.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        function popupInit() {
+            $("#register-div-popup-content").position({
+                my: "center",
+                at: "center",
+                of: "#register-div-popup"
+            });
+            hidePopup();
+        }
+
+        function hidePopup() {
+            $("#register-div-popup").hide();
+            $("#register-div-popup-content").hide();
+        }
+
+        function showPopup() {
+            $("#register-div-popup").show();
+            $("#register-div-popup-content").show();
+        }
+
+        $(document).ready(
+            function () {
+                popupInit();
+                $("#register-div-popup-content > div#popup-header").click(
+                    function () {
+                        hidePopup();
+                        document.location = "Home.aspx?no=0";
+                    }
+                 );
+            }
+        );
+
+        $(window).resize(
+                function () {
+                    $("#register-div-popup-content").position({
+                        my: "center",
+                        at: "center",
+                        of: "#register-div-popup"
+                    });
+                }
+        );
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-div-container">
@@ -50,6 +95,7 @@
                                 City
                             </td>
                             <td>
+
                                 <asp:TextBox ID="TextBox5" CssClass="register-textbox" runat="server"></asp:TextBox>
                             </td>
                         </tr>
@@ -105,17 +151,30 @@
                                 Purpose
                             </td>
                             <td>
-                                <asp:TextBox ID="TextBox7" CssClass="register-textbox" TextMode="MultiLine" Height="60px" Width="200px" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="TextBox7" CssClass="register-textbox" TextMode="MultiLine" Height="60px"
+                                    Width="200px" runat="server"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
                 </fieldset>
                 <div id="register-signup-holder">
-                    <asp:Button ID="Button1" runat="server" CssClass="login-button-subbmit" Text="Request" />
+                    <asp:Button ID="Button1" runat="server" CssClass="login-button-subbmit" OnClientClick="showPopup();return false;"
+                        Text="Request" />
                 </div>
             </div>
             <div class="div-barricades">
             </div>
+        </div>
+    </div>
+    <div id="register-div-popup">
+    </div>
+    <div id="register-div-popup-content">
+        <div id="popup-header">
+            X</div>
+        <div id="popup-body">
+            <div>
+                Your request submited successfully.<br />
+                We will contact you via email soon.</div>
         </div>
     </div>
 </asp:Content>
