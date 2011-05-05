@@ -4,27 +4,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="Scripts/jquery-1.5.2.min.js" type="text/javascript"></script>
     <script src="Scripts/jquery-ui-1.8.12.custom.min.js" type="text/javascript"></script>
+    <script src="Scripts/popup.js" type="text/javascript"></script>
     <script type="text/javascript">
-
-        function popupInit() {
-            $("#register-div-popup-content").position({
-                my: "center",
-                at: "center",
-                of: "#register-div-popup"
-            });
-            hidePopup();
-        }
-
-        function hidePopup() {
-            $("#register-div-popup").hide();
-            $("#register-div-popup-content").hide();
-        }
-
-        function showPopup() {
-            $("#register-div-popup").show();
-            $("#register-div-popup-content").show();
-        }
-
         $(document).ready(
             function () {
                 popupInit();
@@ -35,16 +16,6 @@
                     }
                  );
             }
-        );
-
-        $(window).resize(
-                function () {
-                    $("#register-div-popup-content").position({
-                        my: "center",
-                        at: "center",
-                        of: "#register-div-popup"
-                    });
-                }
         );
     </script>
 </asp:Content>
@@ -95,7 +66,6 @@
                                 City
                             </td>
                             <td>
-
                                 <asp:TextBox ID="TextBox5" CssClass="register-textbox" runat="server"></asp:TextBox>
                             </td>
                         </tr>

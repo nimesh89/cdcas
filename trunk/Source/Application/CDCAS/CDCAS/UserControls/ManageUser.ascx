@@ -9,7 +9,7 @@
             <td class="td-usermanage-controls">
                 <asp:ImageButton ID="ImageButton1" AlternateText=" " Width="25" Height="25" ImageUrl="~/images/block.png"
                     runat="server" />
-                <asp:LinkButton ID="LinkButton1" runat="server">Detailes</asp:LinkButton>
+                <asp:LinkButton ID="LinkButton1" runat="server" OnClientClick="showPopup();return false;" >Detailes</asp:LinkButton>
             </td>
         </tr>
     </table>

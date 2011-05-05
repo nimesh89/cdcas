@@ -54,7 +54,9 @@
     <Content Include="Admin.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="images\accept-icon.png" />
     <Content Include="images\block.png" />
+    <Content Include="images\bmf-ignore-icon.gif" />
     <Content Include="images\cdcs_logo.png" />
     <Content Include="images\collapse_icon.gif" />
     <Content Include="images\expand_icon.gif" />
@@ -81,9 +83,11 @@
     <Content Include="Scripts\jquery-ui-1.8.12.custom.min.js" />
     <Content Include="Scripts\jquery.dropshadow.js" />
     <Content Include="Scripts\Main.js" />
+    <Content Include="Scripts\popup.js" />
     <Content Include="styles\jquery-ui-1.8.12.custom.css" />
     <Content Include="styles\main.css" />
     <Content Include="UserControls\ManageUser.ascx" />
+    <Content Include="UserControls\UserRequest.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -142,6 +146,13 @@
     </Compile>
     <Compile Include="UserControls\ManageUser.ascx.designer.cs">
       <DependentUpon>ManageUser.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserRequest.ascx.cs">
+      <DependentUpon>UserRequest.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserRequest.ascx.designer.cs">
+      <DependentUpon>UserRequest.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -31,6 +31,15 @@ namespace CDCAS {
         protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
         
         /// <summary>
+        /// DropDownList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        
+        /// <summary>
         /// ManageUser1 control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,32 @@ namespace CDCAS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CDCAS.UserControls.ManageUser ManageUser2;
+        
+        /// <summary>
+        /// UserRequest1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CDCAS.UserControls.UserRequest UserRequest1;
+        
+        /// <summary>
+        /// UserRequest3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CDCAS.UserControls.UserRequest UserRequest3;
+        
+        /// <summary>
+        /// UserRequest2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CDCAS.UserControls.UserRequest UserRequest2;
     }
 }
