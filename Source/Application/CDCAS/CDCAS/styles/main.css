@@ -29,6 +29,16 @@
     border-radius: 10px;
 }
 
+#div-navigation a:not(.selected)
+{
+    color:Blue;
+}
+
+#div-navigation a:not(.selected):hover
+{
+    color:Red;
+}
+
 #div-content
 {
     margin-top: 10px;
@@ -36,7 +46,7 @@
 
 .div-barricades
 {
-    clear: left;
+    clear: both;
     width: 1px;
     height: 1px;
 }
@@ -76,11 +86,6 @@
 .menu-static li:first-child
 {
     margin-left: 10px;
-}
-
-.menu-static li > a:hover:not(.selected)
-{
-    color: Red;
 }
 
 .selected
@@ -222,6 +227,72 @@
     margin-top: 80px;
 }
 
+#register-div-popup
+{
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background-color:Black;
+    opacity:0.7;
+    z-index:9;
+}
+
+#register-div-popup-content
+{
+    position:fixed;
+    background-color:White;
+    border: 4px solid #1049A0;
+    border-radius: 15px;
+    width:350px;
+    background-color: #DCE0D8;
+    height:250px;
+    z-index:11;
+}
+
+#register-div-popup-content > div#popup-header
+{
+    position: relative;
+    color: #4141FE;
+    font-weight: bolder;
+    width:20px;
+    font-size: large;
+    text-align: center;
+    margin-left:326px;
+    font-family: Arial;
+    margin-top: 3px;
+    cursor:pointer;
+    vertical-align: middle;
+}
+
+#register-div-popup-content > div#popup-header:hover
+{
+    color:Red;
+}
+
+#register-div-popup-content > div#popup-body
+{
+    color: #1049A0;
+    font-size: 21px;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: auto;
+    margin-left: auto;
+    width: 300px;
+    height:170px;
+    border-radius: 5px;
+    border: 4px solid #1049A0;
+    margin-top: 20px;
+}
+
+#register-div-popup-content > div#popup-body > div
+{
+    position:relative;
+    height:140px;
+    margin-top:30px;
+}
+
 .register-div-groupbox
 {
     position: relative;
@@ -257,3 +328,70 @@
     color: #1049A0;
 }
 
+/*  Admin Page  */
+#admin-div-user-manage
+{
+    position: relative;
+    float: left;
+    border-radius: 15px;
+    border: 4px solid #1049A0;
+    margin-top: 30px;
+    margin-left: 13px;
+    margin-right: 50px;
+    height: 400px;
+    width: 425px;
+    overflow:auto;
+}
+
+#admin-div-request-process
+{
+    position: relative;
+    float: left;
+    border-radius: 15px;
+    border: 4px solid #1049A0;
+    margin-top: 30px;
+    height: 400px;
+    width: 425px;
+    overflow:auto;
+}
+
+#admin-div-search-criterias
+{
+    border: thin dashed #1049A0;
+    border-radius: 15px;
+}
+
+.admin-user-manage-fieldset
+{
+    border: 4px solid #1049A0;
+    border-radius: 15px;
+    color: #1049A0;
+    font-size: 16px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+    width:353px;
+    font-weight: 500;
+}
+
+.admin-div-usermannage
+{
+    border: thin solid #1049A0;
+    margin-bottom:5px;
+    padding-left:5px;
+}
+
+.admin-div-usermannage:hover
+{
+    background-color: #FCF78B;
+}
+
+.admin-div-usermannage > table
+{
+    width:100%;
+}
+
+.admin-div-usermannage  td.td-usermanage-controls
+{
+    text-align:right;
+}
