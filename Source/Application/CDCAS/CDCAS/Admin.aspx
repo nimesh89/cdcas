@@ -6,12 +6,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="Scripts/jquery-1.5.2.min.js" type="text/javascript"></script>
     <script src="Scripts/jquery-ui-1.8.12.custom.min.js" type="text/javascript"></script>
-    <style type="text/css">
+    <%--<style type="text/css">
         #div-navigation ul
         {
             visibility: hidden;
         }
-    </style>
+    </style>--%>
     <script type="text/javascript">
         function toggleSearch() {
             $("#admin-div-search-criterias").slideToggle(300);

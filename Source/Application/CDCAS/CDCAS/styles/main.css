@@ -395,3 +395,89 @@
 {
     text-align:right;
 }
+
+/*      Map Page        */
+#map-div-imageholder
+{
+    position:relative;
+    float:left;
+    width:610px;
+    height:610px;
+    border: 4px solid #1049A0;
+    border-radius: 15px;
+    margin-top: 30px;
+    margin-left: 13px;
+    margin-right:20px;
+}
+
+#map-div-imageholder img
+{
+    position:relative;
+    margin:5px 5px 5px 5px;
+    width:600px;
+    height:600px;
+}
+
+#map-div-controls
+{
+    position:relative;
+    float:left;
+    border: 4px solid #1049A0;
+    border-radius: 15px;
+    margin-top: 30px;
+    width:270px;
+}
+
+#map-div-legend
+{
+    position:relative;
+    float:left;
+    border: 4px solid #1049A0;
+    border-radius: 15px;
+    margin-top: 30px;
+    width:270px;
+}
+
+
+
+.map-fieldset-controls
+{
+    position:relative;
+    width:200px;
+    border: 2px solid #1049A0;
+    margin:10px auto 10px auto; 
+    color: #1049A0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.map-fieldset-controls td.map-td-button
+{
+    position:relative;
+    vertical-align:middle;
+    text-align:center;
+}
+
+.map-legend-item-container
+{
+    position:relative;
+    margin:10px auto 0px auto;
+}
+
+.map-legend-item-container div.colorbox
+{
+    width:25px;
+    height:25px;
+    float:left;
+}
+
+/*  Stat Page   */
+.stat-div-chart
+{
+    position:relative;
+    border: 2px solid #1049A0;
+    padding:5px 5px 5px 5px;
+    float:left;
+    margin-left:15px;
+    margin-top:10px;
+}

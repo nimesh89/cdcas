@@ -23,9 +23,9 @@
                 <Items>
                     <asp:MenuItem Text="Home" NavigateUrl="~/Home.aspx?no=0"></asp:MenuItem>
                     <asp:MenuItem Text="Login" NavigateUrl="~/Login.aspx?no=1"></asp:MenuItem>
-                    <asp:MenuItem Text="Map"></asp:MenuItem>
-                    <asp:MenuItem Text="Stats"></asp:MenuItem>
-                    <asp:MenuItem Text="About Us"></asp:MenuItem>
+                    <asp:MenuItem Text="Map" NavigateUrl="~/Map.aspx?no=2"></asp:MenuItem>
+                    <asp:MenuItem Text="Stats" NavigateUrl="~/Stats.aspx?no=3"></asp:MenuItem>
+                    <asp:MenuItem Text="Admin" NavigateUrl="~/Admin.aspx?no=4"></asp:MenuItem>
                 </Items>
             </asp:Menu>
         </div>
