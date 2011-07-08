@@ -92,8 +92,9 @@ public class MapService extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        MapContext map = null;
         try {
-            MapContext map = generateMap(request.getParameterMap(), getInitParameter(Constants.DATEFORMAT.name()));
+            map = generateMap(request.getParameterMap(), getInitParameter(Constants.DATEFORMAT.name()));
             GTRenderer renderer = new StreamingRenderer();
             renderer.setContext(map);
 
@@ -153,8 +154,11 @@ public class MapService extends HttpServlet {
                     store.dispose();
                 }
             }
-
         } catch (Exception e) {
+        }
+        finally{
+            if(map != null)
+                map.dispose();
         }
     }
 
@@ -196,7 +200,7 @@ public class MapService extends HttpServlet {
                 ? params.get(Constants.DATE.name())[0]
                 : null)
                 : null;
-        SimpleDateFormat dateFormat = new SimpleDateFormat();
+        SimpleDateFormat dateFormat = new SimpleDateFormat(getInitParameter(Constants.DATEFORMAT.name()));
 
         Date date = new Date();
 
@@ -401,8 +405,8 @@ public class MapService extends HttpServlet {
                 int q2 = max - segment;
 
                 Filter critical = filterFactory.between(filterFactory.property(Constants.PCOUNT.toString()), filterFactory.literal(q2), filterFactory.literal(max));
-                Filter high = filterFactory.between(filterFactory.property(Constants.PCOUNT.toString()), filterFactory.literal(q1), filterFactory.literal(q2));
-                Filter moderate = filterFactory.between(filterFactory.property(Constants.PCOUNT.toString()), filterFactory.literal(min), filterFactory.literal(q1));
+                Filter high = filterFactory.between(filterFactory.property(Constants.PCOUNT.toString()), filterFactory.literal(q1), filterFactory.literal(q2-1));
+                Filter moderate = filterFactory.between(filterFactory.property(Constants.PCOUNT.toString()), filterFactory.literal(min), filterFactory.literal(q1-1));
 
                 filters = new Filter[]{critical, high, moderate};
             } else {
