@@ -11,12 +11,11 @@ namespace CDCAS.UserControls
     {
         public string Color { get; set; }
 
-        public string Description { get; set; }
+        public string Description { set { Label1.Text = value; } }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             colorbox.Style.Add(HtmlTextWriterStyle.BackgroundColor, Color);
-            Label1.Text = Description;
         }
     }
 }
