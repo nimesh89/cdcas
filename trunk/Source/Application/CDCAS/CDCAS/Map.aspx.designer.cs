@@ -13,6 +13,15 @@ namespace CDCAS {
     public partial class Map {
         
         /// <summary>
+        /// NameLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NameLabel;
+        
+        /// <summary>
         /// Image1 control.
         /// </summary>
         /// <remarks>
@@ -49,12 +58,39 @@ namespace CDCAS {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// LegendItem1 control.
+        /// CriticalLegendItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CDCAS.UserControls.LegendItem LegendItem1;
+        protected global::CDCAS.UserControls.LegendItem CriticalLegendItem;
+        
+        /// <summary>
+        /// HighLegendItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CDCAS.UserControls.LegendItem HighLegendItem;
+        
+        /// <summary>
+        /// ModerateLegendItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CDCAS.UserControls.LegendItem ModerateLegendItem;
+        
+        /// <summary>
+        /// LegendGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView LegendGridView;
     }
 }

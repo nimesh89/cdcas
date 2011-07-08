@@ -185,6 +185,10 @@
     <Content Include="CDCAS.Master" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataHandler\DataHandler.csproj">
+      <Project>{1345F908-0AC0-4D66-8F5D-BD3E4506252E}</Project>
+      <Name>DataHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MapDataHandler\MapDataHandler.csproj">
       <Project>{0F621076-838C-47F3-892F-4115FF43BA14}</Project>
       <Name>MapDataHandler</Name>

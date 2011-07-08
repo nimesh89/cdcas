@@ -10,7 +10,7 @@
         $(document).ready
         (
             function () {
-                $(".map-date").datepicker(); 
+                $(".map-date").datepicker();
             }
         )
     </script>
@@ -18,12 +18,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-div-container">
         <div class="page-div-title">
-            Map
+            Map&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="NameLabel" runat="server" Text=""></asp:Label>
         </div>
         <div class="div-barricades">
         </div>
         <div id="map-div-imageholder">
-            <asp:Image ID="Image1" AlternateText=" " ImageUrl="http://localhost:8080/MapService/MapService?DESCODE=DENG&HEIGHT=650&WIDTH=600" runat="server" />
+            <asp:Image ID="Image1" AlternateText=" " runat="server" />
         </div>
         <div id="map-div-controls">
             <fieldset class="map-fieldset-controls">
@@ -35,9 +35,6 @@
                         </td>
                         <td>
                             <asp:DropDownList ID="DropDownList1" runat="server">
-                                <asp:ListItem Value="" Text="Dengi"></asp:ListItem>
-                                <asp:ListItem Value="" Text="Cholara"></asp:ListItem>
-                                <asp:ListItem Value="" Text="ChickenPox"></asp:ListItem>
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -50,10 +47,10 @@
                             </asp:DropDownList>
                         </td>
                     </tr>
-                    
                     <tr>
                         <td colspan="2" class="map-td-button">
-                            <asp:Button ID="Button1" runat="server" Text="Generate" />
+                            <asp:Button ID="Button1" runat="server" Text="Generate" 
+                                onclick="Button1_Click" />
                         </td>
                     </tr>
                 </table>
@@ -62,7 +59,12 @@
         <div id="map-div-legend">
             <fieldset class="map-fieldset-controls">
                 <legend>Legend</legend>
-                <uc1:LegendItem ID="LegendItem1" Color="Yellow" Description="Affected Areas" runat="server" />
+                <uc1:LegendItem ID="CriticalLegendItem" Color="Red" runat="server" />
+                <uc1:LegendItem ID="HighLegendItem" Color="Orange"  runat="server" />
+                <uc1:LegendItem ID="ModerateLegendItem" Color="Yellow"  runat="server" />
+                <br />
+                <asp:GridView ID="LegendGridView" runat="server">
+                </asp:GridView>
             </fieldset>
         </div>
         <div class="div-barricades">
