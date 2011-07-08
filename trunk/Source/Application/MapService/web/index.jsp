@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <img alt="" src="MapImageService"></img>
+        <img alt="" src="MapService?test=123&test=456&DESCODE=DENG"></img>
     </body>
 </html>
