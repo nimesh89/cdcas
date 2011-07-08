@@ -23,7 +23,7 @@
         <div class="div-barricades">
         </div>
         <div id="map-div-imageholder">
-            <asp:Image ID="Image1" AlternateText=" " ImageUrl="~/images/asd.jpg" runat="server" />
+            <asp:Image ID="Image1" AlternateText=" " ImageUrl="http://localhost:8080/MapService/MapService?DESCODE=DENG&HEIGHT=650&WIDTH=600" runat="server" />
         </div>
         <div id="map-div-controls">
             <fieldset class="map-fieldset-controls">
@@ -43,20 +43,14 @@
                     </tr>
                     <tr>
                         <td>
-                            From
+                            Year
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox1" CssClass="map-date" runat="server"></asp:TextBox>
+                            <asp:DropDownList ID="DropDownList2" runat="server">
+                            </asp:DropDownList>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            To
-                        </td>
-                        <td>
-                            <asp:TextBox ID="TextBox2" CssClass="map-date" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
+                    
                     <tr>
                         <td colspan="2" class="map-td-button">
                             <asp:Button ID="Button1" runat="server" Text="Generate" />
