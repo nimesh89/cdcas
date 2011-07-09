@@ -65,6 +65,8 @@
                 <br />
                 <asp:GridView ID="LegendGridView" runat="server">
                 </asp:GridView>
+                <br />
+                <asp:HyperLink ID="HyperLink1" Target="_blank" runat="server">Export To Excel</asp:HyperLink>
             </fieldset>
         </div>
         <div class="div-barricades">
