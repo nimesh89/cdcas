@@ -54,6 +54,7 @@
   <ItemGroup>
     <Content Include="Admin.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="ExportToExcel.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="images\accept-icon.png" />
     <Content Include="images\asd.jpg" />
@@ -122,6 +123,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExportToExcel.aspx.cs">
+      <DependentUpon>ExportToExcel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExportToExcel.aspx.designer.cs">
+      <DependentUpon>ExportToExcel.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

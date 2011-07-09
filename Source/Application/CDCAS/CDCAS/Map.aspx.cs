@@ -24,6 +24,7 @@ namespace CDCAS
         private const string RangeIndicator = "-";
         private const string YearDieseaseSeperator = "  -   ";
         private const string DatePostFix = "-01-01";
+        private const string ExportToExcelLinkFormat = "~/ExportToExcel.aspx?diesease={0}&code={1}&year={2}";  
         private const string GetYearsSql = "select distinct date_part('year', \"Date\") as year from \"MapData\" order by year desc";
         private const string GetMostSuitableDieseaseCodeSql = "select Distinct \"DiseaseCode\", pcount from fullcountview where date_part('year', \"Date\") = {0} and \"DiseaseCode\" is not null order by pcount desc limit 1";
         private const string GetDieseasesSql = "select * from tblDieseases";
@@ -79,6 +80,8 @@ namespace CDCAS
 
             DropDownList2.ClearSelection();
             DropDownList2.Items.FindByValue(year).Selected = true;
+
+            HyperLink1.NavigateUrl = string.Format(ExportToExcelLinkFormat, DropDownList1.SelectedItem.Text.Trim(), DropDownList1.SelectedValue, year);
 
             string viewName = string.Concat(dieseaseCode.ToLower(), year);
 
@@ -140,6 +143,8 @@ namespace CDCAS
             NameLabel.Text = string.Concat(year, YearDieseaseSeperator, DropDownList1.SelectedItem.Text);
 
             string viewName = string.Concat(dieseaseCode.ToLower(), year);
+
+            HyperLink1.NavigateUrl = string.Format(ExportToExcelLinkFormat, DropDownList1.SelectedItem.Text.Trim(), DropDownList1.SelectedValue, year);
 
             setMapOptions(dieseaseCode, year, true);
             setLeggendColorDescriptions(viewName);
