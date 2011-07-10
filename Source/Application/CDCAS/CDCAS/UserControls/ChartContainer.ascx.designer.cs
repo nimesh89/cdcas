@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CDCAS {
+namespace CDCAS.UserControls {
     
     
-    public partial class Home {
+    public partial class ChartContainer {
         
         /// <summary>
-        /// ChartContainer1 control.
+        /// Chart1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CDCAS.UserControls.ChartContainer ChartContainer1;
-        
-        /// <summary>
-        /// ChartContainer2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CDCAS.UserControls.ChartContainer ChartContainer2;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
     }
 }

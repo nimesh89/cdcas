@@ -9,29 +9,30 @@ using System.Configuration;
 using System.Data;
 using DataHandler;
 using System.Net;
+using CDCAS.Utilities;
 
 namespace CDCAS
 {
     public partial class Map : System.Web.UI.Page
     {
-        private const string PgConnectionKey = "PgConnectionString";
-        private const string SqlConnectionKey = "SqlConnectionString";
-        private const string MapServiceUrlKey = "MapServiceUrl";
-        private const string DieseaseCodeParamKey = "DESCODE";
-        private const string DateParamKey = "DATE";
-        private const string ParamSeperator = "&";
-        private const string ParamSetValue = "=";
-        private const string RangeIndicator = "-";
-        private const string YearDieseaseSeperator = "  -   ";
-        private const string DatePostFix = "-01-01";
-        private const string ExportToExcelLinkFormat = "~/ExportToExcel.aspx?diesease={0}&code={1}&year={2}";  
-        private const string GetYearsSql = "select distinct date_part('year', \"Date\") as year from \"MapData\" order by year desc";
-        private const string GetMostSuitableDieseaseCodeSql = "select Distinct \"DiseaseCode\", pcount from fullcountview where date_part('year', \"Date\") = {0} and \"DiseaseCode\" is not null order by pcount desc limit 1";
-        private const string GetDieseasesSql = "select * from tblDieseases";
-        private const string GetMaxValueSql = "select pcount from {0} order by pcount desc limit 1  ";
-        private const string GetMinValueSql = "select pcount from {0} order by pcount limit 1  ";
-        private const string GetLegendTableSql = "select gid as \"Id\", divisec as \"Name\", pcount as \"Patients\" from {0} order by pcount desc";
-
+        private  string PgConnectionKey                      =   Constants.PgConnectionKey;                
+        private  string SqlConnectionKey                     =   Constants.SqlConnectionKey;               
+        private  string MapServiceUrlKey                     =   Constants.MapServiceUrlKey;               
+        private  string DieseaseCodeParamKey                 =   Constants.DieseaseCodeParamKey;           
+        private  string DateParamKey                         =   Constants.DateParamKey;                   
+        private  string ParamSeperator                       =   Constants.ParamSeperator;                 
+        private  string ParamSetValue                        =   Constants.ParamSetValue;                  
+        private  string RangeIndicator                       =   Constants.RangeIndicator;                 
+        private  string YearDieseaseSeperator                =   Constants.YearDieseaseSeperator;          
+        private  string DatePostFix                          =   Constants.DatePostFix;                    
+        private  string ExportToExcelLinkFormat              =   Constants.ExportToExcelLinkFormat;        
+        private  string GetYearsSql                          =   Constants.GetYearsSql;                    
+        private  string GetMostSuitableDieseaseCodeSql       =   Constants.GetMostSuitableDieseaseCodeSql; 
+        private  string GetDieseasesSql                      =   Constants.GetDieseasesSql;                
+        private  string GetMaxValueSql                       =   Constants.GetMaxValueSql;                 
+        private  string GetMinValueSql                       =   Constants.GetMinValueSql;
+        private string GetLegendTableSql                     =   Constants.GetLegendTableSql;              
+                                                                
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -107,18 +108,28 @@ namespace CDCAS
 
             DataTable table = pgCon.RunSql(string.Format(GetMinValueSql, viewName));
 
-            int min = Convert.ToInt32(table.Rows[0][0].ToString());
+            int min = 0, max = 0;
+
+            if (table.Rows.Count > 0) 
+            {
+                min = Convert.ToInt32(table.Rows[0][0].ToString());
+            }
 
             table = pgCon.RunSql(string.Format(GetMaxValueSql, viewName));
 
-            int max = Convert.ToInt32(table.Rows[0][0].ToString());
+
+            if (table.Rows.Count > 0)
+            {
+                max = Convert.ToInt32(table.Rows[0][0].ToString());
+            }
+            
 
             int q1 = (max - min) / 3 + min;
             int q2 = max - (max - min) / 3;
 
             string criticalRange = string.Concat(max, RangeIndicator, q2);
-            string highRange = string.Concat(q2-1, RangeIndicator, q1);
-            string moderateRange = string.Concat(q1-1, RangeIndicator, min);
+            string highRange = string.Concat(q2>0?q2-1:q2, RangeIndicator, q1);
+            string moderateRange = string.Concat(q1>0?q1-1:q1, RangeIndicator, min);
 
             CriticalLegendItem.Description = criticalRange;
             HighLegendItem.Description = highRange;
