@@ -10,24 +10,24 @@
 namespace CDCAS {
     
     
-    public partial class Home {
+    public partial class test {
         
         /// <summary>
-        /// ChartContainer1 control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CDCAS.UserControls.ChartContainer ChartContainer1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ChartContainer2 control.
+        /// Chart1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CDCAS.UserControls.ChartContainer ChartContainer2;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
     }
 }

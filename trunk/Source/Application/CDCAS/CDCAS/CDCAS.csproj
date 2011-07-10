@@ -91,10 +91,14 @@
     <Content Include="Stats.aspx" />
     <Content Include="styles\jquery-ui-1.8.12.custom.css" />
     <Content Include="styles\main.css" />
+    <Content Include="test.aspx" />
+    <Content Include="UserControls\ChartContainer.ascx" />
     <Content Include="UserControls\LegendItem.ascx" />
     <Content Include="UserControls\ManageUser.ascx" />
     <Content Include="UserControls\UserRequest.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -167,6 +171,20 @@
     <Compile Include="Stats.aspx.designer.cs">
       <DependentUpon>Stats.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ChartContainer.ascx.cs">
+      <DependentUpon>ChartContainer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ChartContainer.ascx.designer.cs">
+      <DependentUpon>ChartContainer.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\LegendItem.ascx.cs">
       <DependentUpon>LegendItem.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -188,6 +206,8 @@
     <Compile Include="UserControls\UserRequest.ascx.designer.cs">
       <DependentUpon>UserRequest.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\CDCASEnums.cs" />
+    <Compile Include="Utilities\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CDCAS.Master" />
