@@ -10,6 +10,8 @@ using System.Data;
 using DataHandler;
 using System.Net;
 using CDCAS.Utilities;
+using System.Text;
+using System.IO;
 
 namespace CDCAS
 {
@@ -31,7 +33,9 @@ namespace CDCAS
         private  string GetDieseasesSql                      =   Constants.GetDieseasesSql;                
         private  string GetMaxValueSql                       =   Constants.GetMaxValueSql;                 
         private  string GetMinValueSql                       =   Constants.GetMinValueSql;
-        private string GetLegendTableSql                     =   Constants.GetLegendTableSql;              
+        private string GetLegendTableSql                     =   Constants.GetLegendTableSql;
+
+        public string ImageMapHtml { get; set; } 
                                                                 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -141,6 +145,38 @@ namespace CDCAS
         {
             string pgConnectionString = ConfigurationManager.AppSettings[PgConnectionKey];
             PgConnection pgCon = new PgConnection(pgConnectionString);
+
+            string htmlImageMapServiceUrl = ConfigurationManager.AppSettings[Constants.HtmlImageMapServiceKey];
+            string fullUrl = string.Format(htmlImageMapServiceUrl, viewName);
+            HttpWebResponse response = (HttpWebResponse)((HttpWebRequest)HttpWebRequest.Create(fullUrl)).GetResponse();
+
+            Stream resStream = response.GetResponseStream();
+
+            StringBuilder build = new StringBuilder();
+
+            byte[] buf = new byte[8192];
+
+            string tempString = null;
+            int count = 0;
+
+            do
+            {
+                // fill the buffer with data
+                count = resStream.Read(buf, 0, buf.Length);
+
+                // make sure we read some data
+                if (count != 0)
+                {
+                    // translate from bytes to ASCII text
+                    tempString = Encoding.ASCII.GetString(buf, 0, count);
+
+                    // continue building the string
+                    build.Append(tempString);
+                }
+            }
+            while (count > 0); // any more data to read?
+
+            ImageMapHtml = build.ToString();
 
             DataTable table = pgCon.RunSql(string.Format(GetLegendTableSql, viewName));
             LegendGridView.DataSource = table;

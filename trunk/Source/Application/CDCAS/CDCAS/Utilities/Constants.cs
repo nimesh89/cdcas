@@ -25,6 +25,7 @@ namespace CDCAS.Utilities
         public const string ValueOfXIndicator = "#VALX";
         public const string UseMapKey = "usemap";
         public const string UseMapDistricSecretaryValue = "#districSecretaryMap";
+        public const string HtmlImageMapServiceKey = "HtmlImageMapServiceUrl";
         
         
         public const string ExportToExcelLinkFormat = "~/ExportToExcel.aspx?diesease={0}&code={1}&year={2}";
