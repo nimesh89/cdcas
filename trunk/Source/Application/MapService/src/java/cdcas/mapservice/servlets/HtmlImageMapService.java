@@ -69,7 +69,7 @@ public class HtmlImageMapService extends HttpServlet {
 
             dataStore = DataStoreFinder.getDataStore(params);
 
-            FeatureSource featureSource = dataStore.getFeatureSource(view);
+            FeatureSource featureSource = dataStore.getFeatureSource("vwTest");
 
 
             FilterFactory2 factory = new FilterFactoryImpl();
@@ -91,6 +91,8 @@ public class HtmlImageMapService extends HttpServlet {
             SimpleFeatureCollection col = dataStore.getFeatureSource(view).getFeatures();//factory.equals(factory.property("gid"), factory.literal(3))
             SimpleFeatureCollection reader = DataUtilities.collection(col.features());
 
+            //response.getWriter().write("<map id=\"districSecretaryMap\" name=\"districSecretaryMap\">");
+            
             int y = 1;
             SimpleFeatureIterator itr = reader.features();
             while (itr.hasNext()) {
@@ -125,7 +127,7 @@ public class HtmlImageMapService extends HttpServlet {
                 StringBuilder build = new StringBuilder();
                 for (int i = 0; i < screenCordinates.length; i++) {
                     if (i == 0) {
-                        int val = (int) Math.ceil(screenCordinates[i]);
+                        int val = (int) screenCordinates[i];
                         build.append(val);
                     } else {
                         int val = (int) screenCordinates[i];
@@ -134,19 +136,19 @@ public class HtmlImageMapService extends HttpServlet {
                     }
                 }
 
-
+                
 
                 String st = build.toString();
 
 
                 String val = "gid=" + feature.getProperty("gid").getValue().toString();
-                response.getWriter().write(String.format("<area href=\"GeograpHicalStats.aspx?%s\" shape=\"poly\" title=\"%s\" coords=\"%s\" \n/>", val, feature.getProperty("divisec").getValue().toString() + "," + feature.getProperty("gid").getValue().toString(), st));
+                response.getWriter().write(String.format("<area href=\"GeograpHicalStats.aspx?%s\" shape=\"poly\" title=\"%s\" coords=\"%s\" />\n", val, feature.getProperty("divisec").getValue().toString() + "," + feature.getProperty("gid").getValue().toString(), st));
 
 
             }
 
 
-
+            itr.close();
 
 
         } catch (Exception e) {
@@ -158,7 +160,7 @@ public class HtmlImageMapService extends HttpServlet {
             if (map != null) {
                 map.dispose();
             }
-
+            //response.getWriter().write("</map>");
             response.getWriter().flush();
             response.getWriter().close();
         }
