@@ -49,8 +49,7 @@ namespace CDCAS
                 DataGrid grid = new DataGrid();
                 grid.HeaderStyle.Font.Bold = true;
                 grid.DataSource = table;
-                grid.DataMember = table.TableName;
-
+               
                 grid.DataBind();
 
                 // render the DataGrid control to a file

@@ -23,6 +23,8 @@ namespace CDCAS.Utilities
         public const string CommaSeperator = ",";
         public const string PresentageIndicator = "#PERCENT";
         public const string ValueOfXIndicator = "#VALX";
+        public const string UseMapKey = "usemap";
+        public const string UseMapDistricSecretaryValue = "#districSecretaryMap";
         
         
         public const string ExportToExcelLinkFormat = "~/ExportToExcel.aspx?diesease={0}&code={1}&year={2}";
@@ -35,5 +37,6 @@ namespace CDCAS.Utilities
         public const string GetYearVsPcountSql = "SELECT DATEPART(YEAR, [DATE]) AS [YEAR], COUNT([PID]) AS [PCOUNT] FROM [dbo].[tblPatients] GROUP BY DATEPART(YEAR, [DATE]) ORDER BY [Year]";
         public const string GetDieseaseVsPcountForCurrentYear = "SELECT	DE.[NAME],COUNT(PA.[PID]) AS [PCOUNT] FROM [dbo].[tblPatients] PA INNER JOIN [dbo].[tblDieseases] DE ON DE.DESECODE = PA.DIESEASECODE WHERE DATEPART(YEAR, PA.[DATE]) IN (SELECT DISTINCT TOP 5 DATEPART(YEAR, PA.[DATE]) AS [Year] FROM dbo.tblPatients PA ORDER BY [Year] DESC) GROUP BY DE.[NAME]";
         public const string GetPatientBreakDownAgeGenderAndYear = "EXEC dbo.spPatientsBreakDownAgeAndYear";
+        public const string GetYearsStatSql = "SELECT DISTINCT DATEPART(YEAR, [DATE]) AS [YEAR] FROM tblPatients ORDER BY [YEAR] DESC";
     }
 }

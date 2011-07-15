@@ -24,7 +24,7 @@ namespace CDCAS
             dic[ChartConfigurationKeys.YTITLE.ToString()] = "Patients";
             dic[ChartConfigurationKeys.TYPE.ToString()] = SeriesChartType.Pie;
             dic[ChartConfigurationKeys.LEGEND.ToString()] = "Diesease";
-            dic[ChartConfigurationKeys.TITLE.ToString()] = "Dieseases Vs. Patients\n2011";
+            dic[ChartConfigurationKeys.TITLE.ToString()] = "Dieseases Vs. Patients";
             dic[ChartConfigurationKeys.VIEWLEGEND.ToString()] = true;
             dic[ChartConfigurationKeys.PIELABELSTYLE.ToString()] = "Outside";
             dic[ChartConfigurationKeys.NOOFCHARTSERIES.ToString()] = 1;
@@ -44,12 +44,10 @@ namespace CDCAS
             dic[ChartConfigurationKeys.LEGEND.ToString()] = "Gender";
             dic[ChartConfigurationKeys.TITLE.ToString()] = "Year Vs. Patients";
             dic[ChartConfigurationKeys.VIEWLEGEND.ToString()] = true;
-            dic[ChartConfigurationKeys.PIELABELSTYLE.ToString()] = "Inside";
             dic[ChartConfigurationKeys.NOOFCHARTSERIES.ToString()] = 3;
             dic[ChartConfigurationKeys.SERIESNAMES.ToString()] = new List<string> { "Male", "Female", "Children" };
 
             ChartContainer2.ChartConfigurations = dic;
-
         }
     }
 }

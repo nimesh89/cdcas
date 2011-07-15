@@ -44,14 +44,20 @@ namespace CDCAS.UserControls
         {
             Chart1.Height = Convert.ToInt32(ChartConfigurations[ChartConfigurationKeys.HEIGHT.ToString()]);
             Chart1.Width = Convert.ToInt32(ChartConfigurations[ChartConfigurationKeys.WIDTH.ToString()]);
+
             SeriesChartType type = (SeriesChartType)Enum.Parse(typeof(SeriesChartType),
-                Convert.ToInt32(ChartConfigurations[ChartConfigurationKeys.TYPE.ToString()]).ToString());
+                ChartConfigurations[ChartConfigurationKeys.TYPE.ToString()].ToString());
+
+            Docking legendDoking = ChartConfigurations.ContainsKey(ChartConfigurationKeys.LEGENDDOKING.ToString())?(Docking)Enum.Parse(typeof(Docking),
+                ChartConfigurations[ChartConfigurationKeys.LEGENDDOKING.ToString()].ToString()):Docking.Bottom;
 
             Chart1.Titles[0].Text = Convert.ToString(ChartConfigurations[ChartConfigurationKeys.TITLE.ToString()]);
 
             Chart1.ChartAreas[Constants.ChartAreaOneKey].AxisX.Title = Convert.ToString(ChartConfigurations[ChartConfigurationKeys.XTITLE.ToString()]);
             Chart1.ChartAreas[Constants.ChartAreaOneKey].AxisY.Title = Convert.ToString(ChartConfigurations[ChartConfigurationKeys.YTITLE.ToString()]);
 
+
+            Chart1.ChartAreas[Constants.ChartAreaOneKey].AxisX.Interval = 1.0;
 
             object noOfChartSeries = ChartConfigurations.ContainsKey(ChartConfigurationKeys.NOOFCHARTSERIES.ToString()) ? ChartConfigurations[ChartConfigurationKeys.NOOFCHARTSERIES.ToString()] : null;
             int no = noOfChartSeries != null ? Convert.ToInt32(noOfChartSeries) : 0;
@@ -66,6 +72,7 @@ namespace CDCAS.UserControls
                 {
                     Chart1.Legends.Add(new Legend(Convert.ToString(ChartConfigurations[ChartConfigurationKeys.LEGEND.ToString()])));
                     Chart1.Legends[Convert.ToString(ChartConfigurations[ChartConfigurationKeys.LEGEND.ToString()])].Title = Convert.ToString(ChartConfigurations[ChartConfigurationKeys.LEGEND.ToString()]);
+                    Chart1.Legends[Convert.ToString(ChartConfigurations[ChartConfigurationKeys.LEGEND.ToString()])].Docking = legendDoking;
                 }
 
                 int index = 0;
