@@ -35,6 +35,7 @@ namespace CDCAS
                                                                 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Image1.Attributes.Add(Constants.UseMapKey, Constants.UseMapDistricSecretaryValue);
 
             if (!IsPostBack) 
             {

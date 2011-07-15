@@ -21,5 +21,6 @@ namespace CDCAS.Utilities
         ,XVALARRAY
         ,YVALARRAY
         ,SERIESNAMES
+        ,LEGENDDOKING
     }
 }
