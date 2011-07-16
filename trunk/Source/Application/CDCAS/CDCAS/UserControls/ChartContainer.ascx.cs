@@ -22,9 +22,27 @@ namespace CDCAS.UserControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            setChartStyles();
+            
 
             DataTable table = getData();
+
+            bool hasDynamicColumns = ChartConfigurations.ContainsKey(ChartConfigurationKeys.HASDYNAMICCOLUMNS.ToString()) ?
+                Convert.ToBoolean(ChartConfigurations[ChartConfigurationKeys.HASDYNAMICCOLUMNS.ToString()]) : false;
+
+            if (hasDynamicColumns) 
+            {
+                List<string> columns = new List<string>();
+                foreach (DataColumn col in table.Columns) 
+                {
+                    columns.Add(col.ColumnName);
+                }
+                columns.Remove(Convert.ToString(ChartConfigurations[ChartConfigurationKeys.XVALARRAY.ToString()]));
+                ChartConfigurations[ChartConfigurationKeys.NOOFCHARTSERIES.ToString()] = columns.Count;
+                ChartConfigurations[ChartConfigurationKeys.YVALARRAY.ToString()] = columns;
+                ChartConfigurations[ChartConfigurationKeys.SERIESNAMES.ToString()] = columns; 
+            }
+
+            setChartStyles();
 
             Chart1.DataSource = table;
             Chart1.DataBind();

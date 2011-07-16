@@ -22,5 +22,6 @@ namespace CDCAS.Utilities
         ,YVALARRAY
         ,SERIESNAMES
         ,LEGENDDOKING
+        ,HASDYNAMICCOLUMNS
     }
 }
