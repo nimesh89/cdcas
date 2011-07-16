@@ -95,7 +95,7 @@ public class MapImageService extends HttpServlet {
 
             dataStore = DataStoreFinder.getDataStore(params);
 
-            FeatureSource featureSource = dataStore.getFeatureSource("vwTest");
+            FeatureSource featureSource = dataStore.getFeatureSource("provincemap");
 
             FilterFactory2 factory = new FilterFactoryImpl();
 
@@ -115,7 +115,7 @@ public class MapImageService extends HttpServlet {
 
             int i = 120;
             Filter filters[] = new Filter[]{
-                factory.equals(factory.property("gid"), factory.literal(110)), 
+                //factory.equals(factory.property("gid"), factory.literal(110)), 
                 //                            factory.equals(factory.property("gid"), factory.literal(i++)),
             //                            factory.equals(factory.property("gid"), factory.literal(i++)),
             //                            factory.equals(factory.property("gid"), factory.literal(i++)),
@@ -134,7 +134,7 @@ public class MapImageService extends HttpServlet {
             };
 
             Color fills[] = new Color[]{
-                Color.decode("0x1BA5E0")
+               // Color.decode("0x1BA5E0")
 //                Color.decode("0x4D2EFF"),
 //                Color.decode("0xB62EFF"),
 //                Color.decode("0xFF2EE0"),

@@ -141,8 +141,9 @@ public class HtmlImageMapService extends HttpServlet {
                 String st = build.toString();
 
 
-                String val = "gid=" + feature.getProperty("gid").getValue().toString();
-                response.getWriter().write(String.format("<area href=\"GeograpHicalStats.aspx?%s\" shape=\"poly\" title=\"%s\" coords=\"%s\" />\n", val, feature.getProperty("divisec").getValue().toString() + "," + feature.getProperty("gid").getValue().toString(), st));
+                String val = "gid=" + feature.getProperty("gid").getValue().toString()+"&name="+feature.getProperty("divisec").getValue().toString();
+                String title = feature.getProperty("gid").getValue().toString() + "," +feature.getProperty("divisec").getValue().toString()+ "," +feature.getProperty("pcount").getValue().toString();
+                response.getWriter().write(String.format("<area href=\"GeograpHicalStats.aspx?%s\" shape=\"poly\" title=\"%s\" coords=\"%s\" />\n", val, title, st));
 
 
             }
