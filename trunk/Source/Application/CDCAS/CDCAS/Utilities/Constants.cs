@@ -26,6 +26,14 @@ namespace CDCAS.Utilities
         public const string UseMapKey = "usemap";
         public const string UseMapDistricSecretaryValue = "#districSecretaryMap";
         public const string HtmlImageMapServiceKey = "HtmlImageMapServiceUrl";
+        public const string DrilldownImageKey = "DrillDownMapUrl";
+        public const string DSMap = "vwTest";
+        public const string DistricMap = "vwdisticmap";
+        public const string ProvinceMap = "vwprovincemap";
+        public const string OverViewType = "OVERVIEW";
+        public const string ProvinceType = "PROVINCE";
+        public const string DistricType = "DISTRIC";
+        public const string DsType = "DS";
         
         
         public const string ExportToExcelLinkFormat = "~/ExportToExcel.aspx?diesease={0}&code={1}&year={2}";
