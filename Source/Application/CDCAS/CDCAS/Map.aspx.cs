@@ -100,6 +100,7 @@ namespace CDCAS
         {
             string mapServiceUrl = ConfigurationManager.AppSettings[MapServiceUrlKey];
             string fullURL = string.Concat(mapServiceUrl,ParamSeperator, DieseaseCodeParamKey, ParamSetValue, dieseaseCode,ParamSeperator, DateParamKey, ParamSetValue, year,DatePostFix);
+            fullURL = string.Format(fullURL, Constants.ProvinceMap);
             if(isNew)
                 WebRequest.Create(fullURL).GetResponse();
             Image1.ImageUrl = fullURL;
@@ -147,7 +148,7 @@ namespace CDCAS
             PgConnection pgCon = new PgConnection(pgConnectionString);
 
             string htmlImageMapServiceUrl = ConfigurationManager.AppSettings[Constants.HtmlImageMapServiceKey];
-            string fullUrl = string.Format(htmlImageMapServiceUrl, viewName);
+            string fullUrl = string.Format(htmlImageMapServiceUrl, viewName, Constants.DSMap, Constants.OverViewType, 1);
             HttpWebResponse response = (HttpWebResponse)((HttpWebRequest)HttpWebRequest.Create(fullUrl)).GetResponse();
 
             Stream resStream = response.GetResponseStream();
