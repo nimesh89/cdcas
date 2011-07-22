@@ -4,15 +4,10 @@
  */
 package cdcas.mapservice.servlets;
 
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.MultiPolygon;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -21,8 +16,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageOutputStream;
 import javax.servlet.ServletException;
@@ -36,15 +29,12 @@ import org.geotools.data.FeatureSource;
 import org.geotools.data.postgis.PostgisNGDataStoreFactory;
 import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.factory.CommonFactoryFinder;
-import org.geotools.feature.FeatureCollection;
 import org.geotools.filter.FilterFactoryImpl;
-import org.geotools.geometry.DirectPosition2D;
-import org.geotools.geometry.jts.ReferencedEnvelope;
 import org.geotools.map.DefaultMapContext;
+import org.geotools.map.FeatureLayer;
+import org.geotools.map.Layer;
 import org.geotools.map.MapContext;
-import org.geotools.renderer.GTRenderer;
 import org.geotools.renderer.label.LabelCacheImpl;
-import org.geotools.renderer.lite.RendererUtilities;
 import org.geotools.renderer.lite.StreamingRenderer;
 import org.geotools.styling.FeatureTypeStyle;
 import org.geotools.styling.Fill;
@@ -58,10 +48,10 @@ import org.geotools.styling.Style;
 import org.geotools.styling.StyleBuilder;
 import org.geotools.styling.StyleFactory;
 import org.geotools.styling.TextSymbolizer;
-import org.opengis.feature.Feature;
 import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.filter.Filter;
 import org.opengis.filter.FilterFactory2;
+import org.opengis.filter.expression.Expression;
 
 /**
  *
@@ -92,10 +82,17 @@ public class MapImageService extends HttpServlet {
             params.put(PostgisNGDataStoreFactory.DATABASE.key, "postgis");
             params.put(PostgisNGDataStoreFactory.USER.key, "postgres");
             params.put(PostgisNGDataStoreFactory.PASSWD.key, "123");
+//            params.put("dbtype", "postgis");
+//            params.put("host", "localhost");
+//            params.put("database", "postgis");
+//            params.put("port", 5432);
+//            params.put("schema", "public");
+//            params.put("user", "postgres");
+//            params.put("passwd", "123");
 
             dataStore = DataStoreFinder.getDataStore(params);
 
-            FeatureSource featureSource = dataStore.getFeatureSource("provincemap");
+            FeatureSource featureSource = dataStore.getFeatureSource("vwprovincemap");
 
             FilterFactory2 factory = new FilterFactoryImpl();
 
@@ -114,9 +111,9 @@ public class MapImageService extends HttpServlet {
 
 
             int i = 120;
-            Filter filters[] = new Filter[]{
-                //factory.equals(factory.property("gid"), factory.literal(110)), 
-                //                            factory.equals(factory.property("gid"), factory.literal(i++)),
+            Filter filters[] = new Filter[]{ 
+                factory.equals(factory.property("province_c"), factory.literal(Integer.parseInt("2")))//factory.equals(factory.property("gid"), factory.literal(110)), 
+            //                            factory.equals(factory.property("gid"), factory.literal(i++)),
             //                            factory.equals(factory.property("gid"), factory.literal(i++)),
             //                            factory.equals(factory.property("gid"), factory.literal(i++)),
             //                            factory.equals(factory.property("gid"), factory.literal(i++)),
@@ -133,28 +130,27 @@ public class MapImageService extends HttpServlet {
             //                            factory.equals(factory.property("gid"), factory.literal(i++))
             };
 
-            Color fills[] = new Color[]{
-               // Color.decode("0x1BA5E0")
-//                Color.decode("0x4D2EFF"),
-//                Color.decode("0xB62EFF"),
-//                Color.decode("0xFF2EE0"),
-//                Color.decode("0xFF2E77"),
-//                Color.decode("0x2E77FF"),
-//                Color.decode("0x816BFF"),
-//                Color.decode("0xB5A8FF"),
-//                Color.decode("0xFF4D2E"),
-//                Color.decode("0x2EE0FF"),
-//                Color.decode("0xF2FFA8"),
-//                Color.decode("0xE9FF6B"),
-//                Color.decode("0xFFB62E"),
-//                Color.decode("0x2EFFB6"),
-//                Color.decode("0x2EFF4D"),
-//                Color.decode("0x77FF2E"),
-//                Color.decode("0xE0FF2E")
+            Color fills[] = new Color[]{ Color.decode("0x1BA5E0")
+            //                Color.decode("0x4D2EFF"),
+            //                Color.decode("0xB62EFF"),
+            //                Color.decode("0xFF2EE0"),
+            //                Color.decode("0xFF2E77"),
+            //                Color.decode("0x2E77FF"),
+            //                Color.decode("0x816BFF"),
+            //                Color.decode("0xB5A8FF"),
+            //                Color.decode("0xFF4D2E"),
+            //                Color.decode("0x2EE0FF"),
+            //                Color.decode("0xF2FFA8"),
+            //                Color.decode("0xE9FF6B"),
+            //                Color.decode("0xFFB62E"),
+            //                Color.decode("0x2EFFB6"),
+            //                Color.decode("0x2EFF4D"),
+            //                Color.decode("0x77FF2E"),
+            //                Color.decode("0xE0FF2E")
             };
 
-
-            map.addLayer(featureSource.getFeatures(), createPolygonStyle(Color.BLACK, filters, fills));
+            Layer l = new FeatureLayer(featureSource.getFeatures(), createPolygonStyle(Color.BLACK, filters, fills));
+            map.addLayer(l);
 
             Rectangle imageSize = new Rectangle(600, 650);
 
@@ -237,7 +233,7 @@ public class MapImageService extends HttpServlet {
                 ByteArrayOutputStream bt = new ByteArrayOutputStream();
                 ImageOutputStream str = ImageIO.createImageOutputStream(bt);
 
-                renderer.paint(gr, imageSize, map.getAreaOfInterest());
+                renderer.paint(gr, imageSize, map.getViewport().getBounds());
 
                 ImageIO.write(image, "jpeg", str);
 
