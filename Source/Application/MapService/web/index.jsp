@@ -13,6 +13,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <img alt="" src="MapImageService?HEIGHT=650&WIDTH=600&DESCODE=MALA&DATE=2010-01-01"></img>
+        <img alt="" src="MapService?HEIGHT=650&WIDTH=600&MAINMAP=vwprovincemap&LEVEL1=0xA7C951&LEVEL2=0xFCF91C&LEVEL3=0x993138&MAPTYPE=DRILDOWN&MAPLEVEL=DISTRIC&FILTERVALUES=5&FILTERVALUES=53"></img>
+       <img alt="" src="DrilldownImage?HEIGHT=650&WIDTH=600&BASEMAP=districmap&MAPCOLOR=0xA7C951&MAPLEVEL=DISTRIC&FILTERVALUE=5"></img>
     </body>
 </html>

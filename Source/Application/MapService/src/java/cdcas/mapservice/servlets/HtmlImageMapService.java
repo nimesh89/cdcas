@@ -85,10 +85,30 @@ public class HtmlImageMapService extends HttpServlet {
 
             Rectangle imageSize = new Rectangle(600, 650);
 
+            SimpleFeatureCollection col = dataStore.getFeatureSource(view).getFeatures();
+
+            generateMapAreas(map, imageSize, dataStore, col, response);
 
 
-            AffineTransform worldToScreen = RendererUtilities.worldToScreenTransform(map.getAreaOfInterest(), imageSize);
-            SimpleFeatureCollection col = dataStore.getFeatureSource(view).getFeatures();//factory.equals(factory.property("gid"), factory.literal(3))
+        } catch (Exception e) {
+            System.out.println("");
+        } finally {
+            if (dataStore != null) {
+                dataStore.dispose();
+            }
+            if (map != null) {
+                map.dispose();
+            }
+            //response.getWriter().write("</map>");
+            response.getWriter().flush();
+            response.getWriter().close();
+        }
+    }
+    
+    private void generateMapAreas(MapContext map, Rectangle imageSize, DataStore dataStore, SimpleFeatureCollection col, HttpServletResponse response)
+    {
+        try{
+        AffineTransform worldToScreen = RendererUtilities.worldToScreenTransform(map.getAreaOfInterest(), imageSize);
             SimpleFeatureCollection reader = DataUtilities.collection(col.features());
 
             //response.getWriter().write("<map id=\"districSecretaryMap\" name=\"districSecretaryMap\">");
@@ -154,16 +174,6 @@ public class HtmlImageMapService extends HttpServlet {
 
         } catch (Exception e) {
             System.out.println("");
-        } finally {
-            if (dataStore != null) {
-                dataStore.dispose();
-            }
-            if (map != null) {
-                map.dispose();
-            }
-            //response.getWriter().write("</map>");
-            response.getWriter().flush();
-            response.getWriter().close();
         }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

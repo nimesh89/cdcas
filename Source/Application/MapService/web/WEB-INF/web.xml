@@ -68,9 +68,17 @@
             <param-value>SELECT  pcount FROM public.%s order by pcount desc limit 1</param-value>
         </init-param>
     </servlet>
+    <servlet>
+        <servlet-name>DrilldownImage</servlet-name>
+        <servlet-class>cdcas.mapservice.servlets.DrilldownImage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MapService</servlet-name>
         <url-pattern>/MapService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DrilldownImage</servlet-name>
+        <url-pattern>/DrilldownImage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

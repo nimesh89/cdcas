@@ -4,6 +4,7 @@
  */
 package cdcas.mapservice.servlets;
 
+import jaitools.Factory;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -18,6 +19,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -30,10 +32,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.vecmath.Color3b;
 import org.geotools.data.DataStore;
 import org.geotools.data.DataStoreFinder;
 import org.geotools.data.FeatureSource;
 import org.geotools.data.postgis.PostgisNGDataStoreFactory;
+import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.factory.CommonFactoryFinder;
 import org.geotools.filter.FilterFactoryImpl;
 import org.geotools.map.DefaultMapContext;
@@ -81,7 +85,9 @@ public class MapService extends HttpServlet {
             public String toString() {
                 return "pcount";
             }
-        }, HEIGHT, WIDTH,}
+        }, HEIGHT, WIDTH, MAINMAP, LEVEL, MAPTYPE, DRILDOWN, BACKGROUND, MAPLEVEL, DISTRIC, PROVINCE, DS, FILTERVALUES
+    }
+    private ArrayList<String[]> colors;
 
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -105,24 +111,30 @@ public class MapService extends HttpServlet {
 
             renderer.setRendererHints(hints);
             Map<String, String[]> params = request.getParameterMap();
-            
+
             String height = params.containsKey(Constants.HEIGHT.name())
                     ? (params.get(Constants.HEIGHT.name()).length > 0
                     ? params.get(Constants.HEIGHT.name())[0]
                     : null)
                     : null;
-            
+
             String width = params.containsKey(Constants.WIDTH.name())
                     ? (params.get(Constants.WIDTH.name()).length > 0
                     ? params.get(Constants.WIDTH.name())[0]
                     : null)
                     : null;
+            
+            String backgoundColor = params.containsKey(Constants.BACKGROUND.name())
+                ? (params.get(Constants.BACKGROUND.name()).length > 0
+                ? params.get(Constants.BACKGROUND.name())[0]
+                : null)
+                : null;
 
             Rectangle imageSize = new Rectangle(Integer.parseInt(width), Integer.parseInt(height));
 
             BufferedImage image = new BufferedImage(imageSize.width, imageSize.height, BufferedImage.TYPE_INT_RGB);
             Graphics2D gr = image.createGraphics();
-            gr.setPaint(Color.BLUE);
+            gr.setPaint(backgoundColor == null?Color.BLUE:Color.decode(backgoundColor));
             gr.fill(imageSize);  //otherwise black background - which throws of transparency of color
             try {
                 ByteArrayOutputStream bt = new ByteArrayOutputStream();
@@ -149,16 +161,17 @@ public class MapService extends HttpServlet {
                 output.close();
 
             } catch (Exception e) {
+                System.out.println("");
             } finally {
                 if (store != null) {
                     store.dispose();
                 }
             }
         } catch (Exception e) {
-        }
-        finally{
-            if(map != null)
+        } finally {
+            if (map != null) {
                 map.dispose();
+            }
         }
     }
 
@@ -189,7 +202,19 @@ public class MapService extends HttpServlet {
         return datastore;
     }
 
+    private ArrayList<String[]> getLevelColors(Map<String, String[]> params) {
+        int level = 0;
+        ArrayList<String[]> colors = new ArrayList<String[]>();
+        while (params.containsKey(Constants.LEVEL.toString().concat("" + ++level))) {
+            colors.add(params.get(Constants.LEVEL.toString().concat("" + level)));
+        }
+        return colors;
+    }
+
     private MapContext generateMap(Map<String, String[]> params, String format) {
+
+        colors = getLevelColors(params);
+
         String descode = params.containsKey(Constants.DESCODE.name())
                 ? (params.get(Constants.DESCODE.name()).length > 0
                 ? params.get(Constants.DESCODE.name())[0]
@@ -200,36 +225,78 @@ public class MapService extends HttpServlet {
                 ? params.get(Constants.DATE.name())[0]
                 : null)
                 : null;
-        SimpleDateFormat dateFormat = new SimpleDateFormat(getInitParameter(Constants.DATEFORMAT.name()));
 
-        Date date = new Date();
+        String mainMap = params.containsKey(Constants.MAINMAP.name())
+                ? (params.get(Constants.MAINMAP.name()).length > 0
+                ? params.get(Constants.MAINMAP.name())[0]
+                : null)
+                : null;
 
-        try {
-            date = dateFormat.parse(dateString);
-        } catch (Exception e) {
-        }
+        String mapType = params.containsKey(Constants.MAPTYPE.name())
+                ? (params.get(Constants.MAPTYPE.name()).length > 0
+                ? params.get(Constants.MAPTYPE.name())[0]
+                : null)
+                : null;
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
 
-        int year = calendar.get(Calendar.YEAR);
 
-        viewName = generateViewt(year, descode);
-
+        String fullMapName = mainMap == null ? getInitParameter(Constants.FULLMAP.name()) : mainMap;
+        
         store = getDatastore();
 
         MapContext map = new DefaultMapContext();
 
         try {
-            FeatureSource fullMap = store.getFeatureSource(getInitParameter(Constants.FULLMAP.name()));
-            FeatureSource selectedAreas = store.getFeatureSource(viewName);
-            map.addLayer(fullMap, createPolygonStyle(Color.BLACK, Color.decode("0xA7C951"), false));
-            map.addLayer(selectedAreas, createPolygonStyle(Color.BLACK, Color.RED, true));
+            FeatureSource fullMap = store.getFeatureSource(fullMapName);
+            map.addLayer(fullMap, createPolygonStyle(Color.BLACK, Color.decode(colors.get(0)[0]), false));//"0xA7C951"
         } catch (Exception e) {
+            System.out.println("");
         }
 
-        return map;
+        if (mapType != null && mapType.equals(Constants.DRILDOWN.name())) {
+             String mapLevel = params.containsKey(Constants.MAPLEVEL.name())
+                ? (params.get(Constants.MAPLEVEL.name()).length > 0
+                ? params.get(Constants.MAPLEVEL.name())[0]
+                : null)
+                : null;
+            
+            String[] filterValues = params.containsKey(Constants.FILTERVALUES.name())
+                ? (params.get(Constants.FILTERVALUES.name()).length > 0
+                ? params.get(Constants.FILTERVALUES.name())
+                : null)
+                : null;
+            
+            viewName = fullMapName.concat(mapLevel);
+            ArrayList<Filter> filters = drilldownFillter(params, mapLevel, filterValues);
+            
+            generateDrillDown(filters, map, fullMapName);
+            
+        }else
+        {
+           SimpleDateFormat dateFormat = new SimpleDateFormat(getInitParameter(Constants.DATEFORMAT.name()));
 
+            Date date = new Date();
+
+            try {
+                date = dateFormat.parse(dateString);
+            } catch (Exception e) {
+            }
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+
+            int year = calendar.get(Calendar.YEAR);
+
+            viewName = generateView(year, descode);
+
+            try {
+                FeatureSource selectedAreas = store.getFeatureSource(viewName);
+                map.addLayer(selectedAreas, createPolygonStyle(Color.BLACK, Color.RED, true));
+            } catch (Exception e) {
+                System.out.println("");
+            }
+        }
+        return map;
     }
 
     private Connection getPostgreConnection() {
@@ -243,7 +310,7 @@ public class MapService extends HttpServlet {
         return connection;
     }
 
-    private String generateViewt(int year, String diseaseCode) {
+    private String generateView(int year, String diseaseCode) {
         Connection con = getPostgreConnection();
         Statement statement = null;
         String view = diseaseCode.toLowerCase() + year;
@@ -273,6 +340,36 @@ public class MapService extends HttpServlet {
             }
         }
         return view;
+    }
+    
+        
+    private void generateDrillDown(ArrayList<Filter> filters, MapContext map, String fullMap)
+    {
+        int level = 1;
+        for(Filter filter: filters){
+             try {
+                SimpleFeatureCollection selectedArea = store.getFeatureSource(fullMap).getFeatures(filter);
+                map.addLayer(selectedArea, createPolygonStyle(Color.BLACK, Color.decode(colors.get(level++)[0]), false));
+            } catch (Exception e) {
+                System.out.println("");
+            }
+        }
+    }
+
+    
+    private ArrayList<Filter> drilldownFillter(Map<String, String[]> params, String maplevel, String[] filterValues)
+    {
+        ArrayList<Filter> filters = new ArrayList<Filter>();
+        if(maplevel.equals(Constants.DISTRIC.name()))
+        {
+            filters.add(filterFactory.equals(filterFactory.property("province_c"), filterFactory.literal(Integer.parseInt(filterValues[0].toString()))));
+        }
+        else if(maplevel.equals(Constants.DS.name()))
+        {
+           filters.add(filterFactory.equals(filterFactory.property("province_c"), filterFactory.literal(Integer.parseInt(filterValues[0].toString()))));
+           filters.add( filterFactory.equals(filterFactory.property("dcode"), filterFactory.literal(Integer.parseInt(filterValues[1].toString()))));
+        }
+        return filters;
     }
 
     private Style createPolygonStyle(Color s, Color f, boolean enableText) {
@@ -405,8 +502,8 @@ public class MapService extends HttpServlet {
                 int q2 = max - segment;
 
                 Filter critical = filterFactory.between(filterFactory.property(Constants.PCOUNT.toString()), filterFactory.literal(q2), filterFactory.literal(max));
-                Filter high = filterFactory.between(filterFactory.property(Constants.PCOUNT.toString()), filterFactory.literal(q1), filterFactory.literal(q2-1));
-                Filter moderate = filterFactory.between(filterFactory.property(Constants.PCOUNT.toString()), filterFactory.literal(min), filterFactory.literal(q1-1));
+                Filter high = filterFactory.between(filterFactory.property(Constants.PCOUNT.toString()), filterFactory.literal(q1), filterFactory.literal(q2 - 1));
+                Filter moderate = filterFactory.between(filterFactory.property(Constants.PCOUNT.toString()), filterFactory.literal(min), filterFactory.literal(q1 - 1));
 
                 filters = new Filter[]{critical, high, moderate};
             } else {
