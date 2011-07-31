@@ -12,7 +12,7 @@ namespace DataHandler
         public SqlConnection Connection { get; set; }
         public string ConnectionString { get; set; }
 
-        public SqlServerConnection(string connectionString) 
+        public SqlServerConnection(string connectionString)
         {
             ConnectionString = connectionString;
         }
@@ -26,7 +26,7 @@ namespace DataHandler
             Connection = con;
         }
 
-        public DataTable RunSql(string sql) 
+        public DataTable RunSql(string sql)
         {
             DataTable table = new DataTable();
 
@@ -40,15 +40,16 @@ namespace DataHandler
 
                 table.Load(reader);
 
-              
+
             }
             catch (SqlException ex)
             {
                 Console.WriteLine(ex.Errors);
             }
-            finally 
+            finally
             {
-                Connection.Close();
+                if (Connection != null)
+                    Connection.Close();
             }
 
             return table;

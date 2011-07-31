@@ -108,6 +108,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="WebServices\ChartService.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.aspx.cs">
@@ -225,6 +226,13 @@
     </Compile>
     <Compile Include="Utilities\CDCASEnums.cs" />
     <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilities\ContainerPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebServices\ChartService.asmx.cs">
+      <DependentUpon>ChartService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="CDCAS.Master" />

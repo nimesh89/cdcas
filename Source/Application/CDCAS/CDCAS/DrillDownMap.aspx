@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CDCAS.Master" AutoEventWireup="true" CodeBehind="DrillDownMap.aspx.cs" Inherits="CDCAS.DrillDownMap" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CDCAS.Master" AutoEventWireup="true"
+    CodeBehind="DrillDownMap.aspx.cs" Inherits="CDCAS.DrillDownMap" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="Scripts/jquery-1.5.2.min.js" type="text/javascript"></script>
     <script src="Scripts/jquery-ui-1.8.12.custom.min.js" type="text/javascript"></script>
@@ -9,8 +11,22 @@
         (
             function () {
                 $('.map-div-imageholder-image').maphilight();
+                $('#map-div-chart').hide();
             }
-        )
+        );
+
+        function getChart(val, titleVal) {
+            $.ajax({
+                url: "WebServices/ChartService.asmx/LoadOverviewChart",
+                type: "POST",
+                data: ({ filter: val, title: titleVal }),
+                dataType: "html",
+                success: function (msg) {
+                    $('#map-div-chart').html(msg);
+                    $('#map-div-chart').show();
+                }
+            });
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -28,8 +44,9 @@
             </map>
         </div>
         <div id="map-div-controls">
-            <asp:Image ID="OverviewMapImage" AlternateText=" " Width="250px" Height="280px"
-                runat="server" />
+            <asp:Image ID="OverviewMapImage" AlternateText=" " Width="250px" Height="280px" runat="server" />
+        </div>
+        <div id="map-div-chart">
         </div>
         <div class="div-barricades">
         </div>
