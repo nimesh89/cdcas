@@ -47,5 +47,6 @@ namespace CDCAS.Utilities
         public const string GetDieseaseVsPcountForCurrentYear = "SELECT	DE.[NAME],COUNT(PA.[PID]) AS [PCOUNT] FROM [dbo].[tblPatients] PA INNER JOIN [dbo].[tblDieseases] DE ON DE.DESECODE = PA.DIESEASECODE WHERE DATEPART(YEAR, PA.[DATE]) IN (SELECT DISTINCT TOP 5 DATEPART(YEAR, PA.[DATE]) AS [Year] FROM dbo.tblPatients PA ORDER BY [Year] DESC) GROUP BY DE.[NAME]";
         public const string GetPatientBreakDownAgeGenderAndYear = "EXEC dbo.spPatientsBreakDownAgeAndYear";
         public const string GetYearsStatSql = "SELECT DISTINCT DATEPART(YEAR, [DATE]) AS [YEAR] FROM tblPatients ORDER BY [YEAR] DESC";
+        public const string GenerateDrilldownChart = "EXEC spGenerateDrillDownChart N'{0}'";
     }
 }

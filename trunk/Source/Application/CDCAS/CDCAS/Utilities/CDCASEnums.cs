@@ -23,5 +23,6 @@ namespace CDCAS.Utilities
         ,SERIESNAMES
         ,LEGENDDOKING
         ,HASDYNAMICCOLUMNS
+        ,DISABLELABELS
     }
 }
