@@ -177,16 +177,22 @@ public class HtmlImageMapService extends HttpServlet {
                 } else if (level == DrillDownConstants.PROVINCE) {
                     Object provinceId = feature.getProperty("province_c").getValue();
                     Object provinceName = feature.getProperty("province_n").getValue();
+
                     String val = "province_c=" + provinceId.toString() + "&name=" + provinceName.toString() + "&MAPLEVEL=DISTRIC";
-                    String title = feature.getProperty("province_c").getValue().toString() + ","
-                            + feature.getProperty("province_n").getValue().toString();
-                    response.getWriter().write(String.format("<area href=\"DrillDownMap.aspx?%s\" shape=\"poly\" title=\"%s\" coords=\"%s\" />\n", val, title, st));
+                    String title = provinceId.toString() + ","
+                            + provinceName.toString();
+                    response.getWriter().write(String.format("<area href=\"DrillDownMap.aspx?%s\" shape=\"poly\" onmouseover=\"getChart('province_c = %s', '%s')\" onmouseout=\"$('#map-div-chart').toggle();\" title=\"%s\" coords=\"%s\" />\n", val, provinceId.toString(), provinceName.toString(),title, st));
                 }
                 if (level == DrillDownConstants.DISTRIC) {
-                    String val = "dcode=" + feature.getProperty("dcode").getValue().toString() + "&province_c=" + feature.getProperty("province_c").getValue().toString() + "&province_n=" + feature.getProperty("province_n").getValue().toString() + "&name=" + feature.getProperty("dist").getValue().toString() + "&MAPLEVEL=DS";
-                    String title = feature.getProperty("dcode").getValue().toString() + ","
-                            + feature.getProperty("dist").getValue().toString();
-                    response.getWriter().write(String.format("<area href=\"DrillDownMap.aspx?%s\" shape=\"poly\" title=\"%s\" coords=\"%s\" />\n", val, title, st));
+                    Object provinceId = feature.getProperty("province_c").getValue();
+                    Object provinceName = feature.getProperty("province_n").getValue();
+                    Object distId = feature.getProperty("dcode").getValue();
+                    Object distName = feature.getProperty("dist").getValue();
+
+                    String val = "dcode=" + distId.toString() + "&province_c=" + provinceId.toString() + "&province_n=" + provinceName.toString() + "&name=" + distName.toString() + "&MAPLEVEL=DS";
+                    String title = distId.toString() + ","
+                            + distName.toString();
+                    response.getWriter().write(String.format("<area href=\"DrillDownMap.aspx?%s\" shape=\"poly\" onmouseover=\"getChart('dcode = %s', '%s')\" onmouseout=\"$('#map-div-chart').toggle();\" title=\"%s\" coords=\"%s\" />\n", val, distId.toString(), distName.toString()+" District",title, st));
                 }
                 if (level == DrillDownConstants.DS) {
                     String val = "gid=" + feature.getProperty("gid").getValue().toString() + "&name=" + feature.getProperty("divisec").getValue().toString();
