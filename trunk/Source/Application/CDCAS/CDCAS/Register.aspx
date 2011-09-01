@@ -36,6 +36,13 @@
                             <td>
                                 <asp:TextBox ID="TextBox1" CssClass="register-textbox" runat="server"></asp:TextBox>
                             </td>
+                            <td>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                                    ControlToValidate="TextBox1" ErrorMessage="*" ForeColor="Red" 
+                                    ValidationExpression="([a-zA-z]){4,}"></asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                    ControlToValidate="TextBox1" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -44,6 +51,7 @@
                             <td>
                                 <asp:TextBox ID="TextBox2" CssClass="register-textbox" runat="server"></asp:TextBox>
                             </td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td>
@@ -51,6 +59,10 @@
                             </td>
                             <td>
                                 <asp:TextBox ID="TextBox3" CssClass="register-textbox" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                    ControlToValidate="TextBox3" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -60,6 +72,10 @@
                             <td>
                                 <asp:TextBox ID="TextBox4" CssClass="register-textbox" runat="server"></asp:TextBox>
                             </td>
+                            <td>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                                    ControlToValidate="TextBox4" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -68,6 +84,10 @@
                             <td>
                                 <asp:TextBox ID="TextBox5" CssClass="register-textbox" runat="server"></asp:TextBox>
                             </td>
+                            <td>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                                    ControlToValidate="TextBox5" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -75,6 +95,13 @@
                             </td>
                             <td>
                                 <asp:TextBox ID="TextBox6" CssClass="register-textbox" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                                    ControlToValidate="TextBox6" ErrorMessage="*" ForeColor="Red" 
+                                    ValidationExpression="([0-9]){10}"></asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
+                                    ControlToValidate="TextBox6" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -87,6 +114,10 @@
                                     <asp:ListItem Text="Female" Value="F"></asp:ListItem>
                                 </asp:RadioButtonList>
                             </td>
+                            <td>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+                                    ControlToValidate="RadioButtonList1" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -94,6 +125,13 @@
                             </td>
                             <td>
                                 <asp:TextBox ID="TextBox8" CssClass="register-textbox" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" 
+                                    ControlToValidate="TextBox8" ErrorMessage="*" ForeColor="Red" 
+                                    ValidationExpression="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"></asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
+                                    ControlToValidate="TextBox8" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -103,11 +141,16 @@
                             <td>
                                 <asp:TextBox ID="TextBox9" CssClass="register-textbox" runat="server"></asp:TextBox>
                             </td>
+                            <td>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
+                                    ControlToValidate="TextBox9" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2">
                                 <asp:CheckBox ID="CheckBox1" Text="If Passport tick here" runat="server" />
                             </td>
+                            <td></td>
                         </tr>
                     </table>
                 </fieldset>
@@ -124,6 +167,7 @@
                                 <asp:TextBox ID="TextBox7" CssClass="register-textbox" TextMode="MultiLine" Height="60px"
                                     Width="200px" runat="server"></asp:TextBox>
                             </td>
+                            <td valign="middle"></td>
                         </tr>
                     </table>
                 </fieldset>
