@@ -195,10 +195,12 @@ public class HtmlImageMapService extends HttpServlet {
                     response.getWriter().write(String.format("<area href=\"DrillDownMap.aspx?%s\" shape=\"poly\" onmouseover=\"getChart('dcode = %s', '%s')\" onmouseout=\"$('#map-div-chart').toggle();\" title=\"%s\" coords=\"%s\" />\n", val, distId.toString(), distName.toString()+" District",title, st));
                 }
                 if (level == DrillDownConstants.DS) {
-                    String val = "gid=" + feature.getProperty("gid").getValue().toString() + "&name=" + feature.getProperty("divisec").getValue().toString();
-                    String title = feature.getProperty("gid").getValue().toString() + ","
-                            + feature.getProperty("divisec").getValue().toString();
-                    response.getWriter().write(String.format("<area href=\"GeograpHicalStats.aspx?%s\" shape=\"poly\" title=\"%s\" coords=\"%s\" />\n", val, title, st));
+                    Object gid = feature.getProperty("gid").getValue();
+                    Object name = feature.getProperty("divisec").getValue();
+                    String val = "gid=" + gid.toString() + "&name=" + name.toString();
+                    String title = gid.toString() + ","
+                            + name.toString();
+                    response.getWriter().write(String.format("<area href=\"GeograpHicalStats.aspx?%s\" onmouseover=\"getChart('GID = %s', '%s')\" shape=\"poly\" title=\"%s\" coords=\"%s\" />\n", val, gid.toString(), name.toString(),title, st));
                 }
 
             }
