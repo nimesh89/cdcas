@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="NewMaster.master.cs" Inherits="CDCAS.NewMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="styles/NewMain.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    	.nbut{
+			background-image:url('images/button_n.png');
+			background-repeat:no-repeat;
+			text-align:center;
+			vertical-align:middle;
+		}
+		.nbut:not(.selected):hover{
+			background-image:url('images/button_h.png');
+			background-repeat:no-repeat;
+			text-align:center;
+			vertical-align:middle;
+		}
+		
+		.nbut.selected{
+			background-image:url('images/button_s.png');
+			background-repeat:no-repeat;
+			text-align:center;
+			vertical-align:middle;
+		}
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body background="images/1365009-diamond-plate-brushed-aluminum-web-page-background.jpg">
+	<img alt="" src="images/Header.jpg" />
+    <form id="form1" runat="server">
+    <asp:Menu runat="server" id="Menu1" Orientation="Horizontal" BackColor="#5591F2" BorderColor="White" Font-Bold="True" Font-Size="16pt" ForeColor="Black" Height="30px" Width="960px" >
+		<Items>
+			<asp:MenuItem Text="Home" Value="Home" NavigateUrl="~/Home.aspx" 
+                Selected="True">
+			</asp:MenuItem>
+			<asp:MenuItem Text="Map" Value="Map" NavigateUrl="~/Map.aspx">
+			</asp:MenuItem>
+			<asp:MenuItem Text="Chart" Value="Chart" NavigateUrl="~/Stats.aspx">
+			</asp:MenuItem>
+			<asp:MenuItem Text="Drilldown" Value="Drilldown" 
+                NavigateUrl="~/DrillDownMap.aspx">
+			</asp:MenuItem>
+		</Items>
+		<StaticMenuItemStyle Height="29px" Width="120px" CssClass="nbut" />
+		<StaticMenuStyle BackColor="#5591F2" />
+		</asp:Menu>
+    <div style="margin-top: 15px; width: 960px; background-color: #FFFFFF;">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        	
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

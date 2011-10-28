@@ -58,13 +58,17 @@
     <Content Include="ExportToExcel.aspx" />
     <Content Include="GeograpHicalStats.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="images\1365009-diamond-plate-brushed-aluminum-web-page-background.jpg" />
     <Content Include="images\accept-icon.png" />
     <Content Include="images\asd.jpg" />
     <Content Include="images\block.png" />
     <Content Include="images\bmf-ignore-icon.gif" />
+    <Content Include="images\button_n.png" />
     <Content Include="images\cdcs_logo.png" />
     <Content Include="images\collapse_icon.gif" />
     <Content Include="images\expand_icon.gif" />
+    <Content Include="images\Header.jpg" />
+    <Content Include="images\miscellaneous_275.jpg" />
     <Content Include="images\search.jpg" />
     <Content Include="images\Title.png" />
     <Content Include="images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -94,6 +98,7 @@
     <Content Include="Stats.aspx" />
     <Content Include="styles\jquery-ui-1.8.12.custom.css" />
     <Content Include="styles\main.css" />
+    <Content Include="styles\NewMain.css" />
     <Content Include="test.aspx" />
     <Content Include="UserControls\ChartContainer.ascx" />
     <Content Include="UserControls\LegendItem.ascx" />
@@ -108,6 +113,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="WebForm1.aspx" />
     <Content Include="WebServices\ChartService.asmx" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +180,13 @@
     <Compile Include="Map.aspx.designer.cs">
       <DependentUpon>Map.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NewMaster.Master.cs">
+      <DependentUpon>NewMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewMaster.Master.designer.cs">
+      <DependentUpon>NewMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -229,6 +242,13 @@
     <Compile Include="Utilities\ContainerPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebServices\ChartService.asmx.cs">
       <DependentUpon>ChartService.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -246,6 +266,9 @@
       <Project>{0F621076-838C-47F3-892F-4115FF43BA14}</Project>
       <Name>MapDataHandler</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NewMaster.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
