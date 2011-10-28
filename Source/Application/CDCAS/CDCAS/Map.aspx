@@ -16,6 +16,13 @@
             }
         )
     </script>
+    <style type="text/css">
+        .map-div-imageholder-image
+        {
+            top: 0px;
+            left: 0px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-div-container">
@@ -40,7 +47,7 @@
                             Disease
                         </td>
                         <td>
-                            <asp:DropDownList ID="DropDownList1" runat="server">
+                            <asp:DropDownList ID="DropDownList1" Width="100px" runat="server">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -49,7 +56,7 @@
                             Year
                         </td>
                         <td>
-                            <asp:DropDownList ID="DropDownList2" runat="server">
+                            <asp:DropDownList ID="DropDownList2" Width="100px" runat="server">
                             </asp:DropDownList>
                         </td>
                     </tr>
