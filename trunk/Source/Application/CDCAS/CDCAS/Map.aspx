@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CDCAS.Master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NewMaster.Master" AutoEventWireup="true"
     CodeBehind="Map.aspx.cs" Inherits="CDCAS.Map" %>
 
 <%@ Register Src="UserControls/LegendItem.ascx" TagName="LegendItem" TagPrefix="uc1" %>
@@ -21,6 +21,11 @@
         {
             top: 0px;
             left: 0px;
+        }
+        
+        .page-div-container
+        {
+            height:750px;
         }
     </style>
 </asp:Content>

@@ -10,6 +10,15 @@
 namespace CDCAS {
     
     
-    public partial class Home {
+    public partial class WebForm2 {
+        
+        /// <summary>
+        /// ChartContainer1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CDCAS.UserControls.ChartContainer ChartContainer1;
     }
 }
