@@ -63,7 +63,8 @@ namespace CDCAS
                 dic[ChartConfigurationKeys.QUERY.ToString()] = string.Format(ChartDataSql, DropDownList2.Items[0].Value, "ALL");
                 dic[ChartConfigurationKeys.TITLE.ToString()] = string.Format(TitleFormat, DropDownList1.Items[0].Text, DropDownList2.Items[0].Value);
 
-                ChartContainer1.ChartConfigurations = dic;
+                ChartContainer1.ChartConfigurations = dic;  
+                
             }
 
             if (IsPostBack) 
@@ -73,6 +74,41 @@ namespace CDCAS
 
                 ChartContainer1.ChartConfigurations = dic;
             }
+
+            dic = new Dictionary<string, object>();
+
+            dic[ChartConfigurationKeys.QUERY.ToString()] = string.Format(Constants.GetDieseaseVsPcountForCurrentYear, DateTime.Now.Year);
+            dic[ChartConfigurationKeys.HEIGHT.ToString()] = 500;
+            dic[ChartConfigurationKeys.WIDTH.ToString()] = 700;
+            dic[ChartConfigurationKeys.XVALARRAY.ToString()] = "NAME";
+            dic[ChartConfigurationKeys.YVALARRAY.ToString()] = new List<string> { "PCOUNT" };
+            dic[ChartConfigurationKeys.XTITLE.ToString()] = "Diesease";
+            dic[ChartConfigurationKeys.YTITLE.ToString()] = "Patients";
+            dic[ChartConfigurationKeys.TYPE.ToString()] = SeriesChartType.Pie;
+            dic[ChartConfigurationKeys.LEGEND.ToString()] = "Diesease";
+            dic[ChartConfigurationKeys.TITLE.ToString()] = "Dieseases Vs. Patients";
+            dic[ChartConfigurationKeys.VIEWLEGEND.ToString()] = true;
+            dic[ChartConfigurationKeys.PIELABELSTYLE.ToString()] = "Outside";
+            dic[ChartConfigurationKeys.NOOFCHARTSERIES.ToString()] = 1;
+            dic[ChartConfigurationKeys.SERIESNAMES.ToString()] = new List<string> { "DieseasesVsPatients" };
+
+            ChartContainer2.ChartConfigurations = dic;
+
+            dic = new Dictionary<string, object>();
+            dic[ChartConfigurationKeys.QUERY.ToString()] = Constants.GetPatientBreakDownAgeGenderAndYear;
+            dic[ChartConfigurationKeys.HEIGHT.ToString()] = 500;
+            dic[ChartConfigurationKeys.WIDTH.ToString()] = 700;
+            dic[ChartConfigurationKeys.XVALARRAY.ToString()] = "YEAR";
+            dic[ChartConfigurationKeys.YVALARRAY.ToString()] = new List<string> { "MALECOUNT", "FEMALECOUNT", "CHILDCOUNT" };
+            dic[ChartConfigurationKeys.XTITLE.ToString()] = "Year";
+            dic[ChartConfigurationKeys.YTITLE.ToString()] = "Patients";
+            dic[ChartConfigurationKeys.TYPE.ToString()] = SeriesChartType.Column;
+            dic[ChartConfigurationKeys.LEGEND.ToString()] = "Gender";
+            dic[ChartConfigurationKeys.TITLE.ToString()] = "Year Vs. Patients";
+            dic[ChartConfigurationKeys.VIEWLEGEND.ToString()] = true;
+            dic[ChartConfigurationKeys.NOOFCHARTSERIES.ToString()] = 3;
+            dic[ChartConfigurationKeys.SERIESNAMES.ToString()] = new List<string> { "Male", "Female", "Children" };
+            ChartContainer3.ChartConfigurations = dic;
         }
 
         protected void Button1_Click(object sender, EventArgs e)

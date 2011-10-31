@@ -35,21 +35,21 @@
     <form id="form1" runat="server">
     <asp:Menu runat="server" id="Menu1" Orientation="Horizontal" BackColor="#5591F2" BorderColor="White" Font-Bold="True" Font-Size="16pt" ForeColor="Black" Height="30px" Width="960px" >
 		<Items>
-			<asp:MenuItem Text="Home" Value="Home" NavigateUrl="~/Home.aspx" 
+			<asp:MenuItem Text="Home" Value="Home" NavigateUrl="~/Home.aspx?no=0" 
                 Selected="True">
 			</asp:MenuItem>
-			<asp:MenuItem Text="Map" Value="Map" NavigateUrl="~/Map.aspx">
+			<asp:MenuItem Text="Map" Value="Map" NavigateUrl="~/Map.aspx?no=1">
 			</asp:MenuItem>
-			<asp:MenuItem Text="Chart" Value="Chart" NavigateUrl="~/Stats.aspx">
+			<asp:MenuItem Text="Chart" Value="Chart" NavigateUrl="~/Stats.aspx?no=2">
 			</asp:MenuItem>
 			<asp:MenuItem Text="Drilldown" Value="Drilldown" 
-                NavigateUrl="~/DrillDownMap.aspx">
+                NavigateUrl="~/DrillDownMap.aspx?no=3">
 			</asp:MenuItem>
 		</Items>
 		<StaticMenuItemStyle Height="29px" Width="120px" CssClass="nbut" />
 		<StaticMenuStyle BackColor="#5591F2" />
 		</asp:Menu>
-    <div style="margin-top: 15px; width: 960px; background-color: #FFFFFF;">
+    <div style="margin-top: 15px; width: 960px; background-color: #FFFFFF;display:block;">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         	

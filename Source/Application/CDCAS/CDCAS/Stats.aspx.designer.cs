@@ -47,5 +47,23 @@ namespace CDCAS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CDCAS.UserControls.ChartContainer ChartContainer1;
+        
+        /// <summary>
+        /// ChartContainer2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CDCAS.UserControls.ChartContainer ChartContainer2;
+        
+        /// <summary>
+        /// ChartContainer3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CDCAS.UserControls.ChartContainer ChartContainer3;
     }
 }

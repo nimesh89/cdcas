@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CDCAS.Master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NewMaster.Master" AutoEventWireup="true"
     CodeBehind="DrillDownMap.aspx.cs" Inherits="CDCAS.DrillDownMap" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
