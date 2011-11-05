@@ -56,6 +56,7 @@
         
         </asp:ContentPlaceHolder>
     </div>
-    </form>
+    <div style="width:957px;height:40px;color:gray;background-color: #329efc;font-size:12px;text-align:right;padding-top:8px;padding-right:5px"><div style="position:relative;margin-top:10px">2011. All Rights Reserved. Design by CDCAS Team</div></div>
+       </form>
 </body>
 </html>
