@@ -30,7 +30,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="page-div-container">
+    <div class="page-div-container" style="height:800px">
         <div class="page-div-title">
             <asp:Label ID="NameLabel" runat="server" Text=""></asp:Label>Map
         </div>
