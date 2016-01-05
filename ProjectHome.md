@@ -1,0 +1,1 @@
+Purpose of this system is to give an analytical views to user regarding communicable diseases. It also show the spread of selected diseases over a map.
